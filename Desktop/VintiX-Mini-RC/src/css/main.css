@@ -1,0 +1,24 @@
+/* ========================================
+   MAIN CSS ENTRY POINT
+   Imports all CSS modules in order
+   ======================================== */
+
+/* 1. Variables & Design Tokens */
+@import url("./_variables.css");
+
+/* 2. Global Styles & Reset */
+@import url("./_base.css");
+
+/* 3. Components */
+@import url("./components/navbar.css");
+@import url("./components/hero.css");
+@import url("./components/features.css");
+@import url("./components/products.css");
+@import url("./components/gallery.css");
+@import url("./components/modal.css");
+@import url("./components/forms.css");
+@import url("./components/footer.css");
+
+/* 4. Utilities */
+@import url("./utilities/animations.css");
+@import url("./utilities/responsive.css");
