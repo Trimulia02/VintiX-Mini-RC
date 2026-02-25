@@ -12,10 +12,61 @@
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
 
+    <!-- Premium Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="intro-loading">
+    <!-- Intro Sequence Overlay -->
+    <div id="sequenceOverlay" class="sequence-overlay" aria-hidden="true">
+      <canvas id="sequenceCanvas"></canvas>
+
+      <div
+        id="sequenceLoadingOverlay"
+        class="sequence-loading-overlay"
+        role="status"
+        aria-live="polite"
+      >
+        <div class="sequence-loading-panel">
+          <img
+            class="sequence-loading-logo"
+            src="assets/logo/vintix-logo-nav.png"
+            alt="VintiX Mini RC"
+          />
+          <p class="sequence-loading-label">Cinematic Intro</p>
+          <h1 class="sequence-loading-title">PREPARING PREMIUM RC EXPERIENCE</h1>
+          <div class="sequence-loading-bar" aria-hidden="true">
+            <span id="sequenceLoadingBarFill" class="sequence-loading-bar-fill"></span>
+          </div>
+          <p class="sequence-loading-count">
+            <span id="sequenceLoadedFrames">0</span>
+            <span>/240 FRAME</span>
+          </p>
+        </div>
+      </div>
+
+      <p id="sequenceScrollHint" class="sequence-scroll-hint" hidden>
+        SCROLL TO PLAY SEQUENCE
+      </p>
+    </div>
+
+    <!-- Intro Sequence Scroll Track -->
+    <section id="sequenceTrack" class="sequence-track" aria-hidden="true">
+      <div class="sequence-track-overlay">
+        <p class="sequence-kicker">VintiX Mini RC</p>
+        <h2 class="sequence-heading">Scroll controlled cinematic intro</h2>
+      </div>
+    </section>
+
+    <div class="background-gif-layer" aria-hidden="true"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
       <div class="nav-container">
@@ -47,11 +98,7 @@
           <p>Experience the Ultimate in Remote Control Vehicles</p>
           <button
             class="btn-primary"
-            onclick="
-              document
-                .querySelector('#models')
-                .scrollIntoView({ behavior: 'smooth' })
-            "
+            onclick="scrollToSection('models')"
           >
             EXPLORE NOW
           </button>

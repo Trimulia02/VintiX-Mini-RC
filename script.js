@@ -31,9 +31,6 @@ const CONFIG = {
   // Payment processing timeout
   PAYMENT_TIMEOUT: 2000,
 
-  // Animation delay
-  ANIMATION_DELAY: 0.3,
-
   // Default specs
   DEFAULT_SPECS: {
     battery: "2x AA",
@@ -43,22 +40,17 @@ const CONFIG = {
   },
 };
 
-// Z-index management
-const Z_INDEX = {
-  DROPDOWN: 100,
-  MODAL: 1000,
-  NOTIFICATION: 2000,
+const PRODUCT_MODEL_PATHS = {
+  "RC HIGHWAYMAN": CONFIG.MODELS.RC_HIGHWAYMAN,
+  "RC ANNIHILATOR": CONFIG.MODELS.RC_ANNIHILATOR,
+  "RC SHVAN": CONFIG.MODELS.RC_SHVAN,
+  "FORTNITE TIME MACHINE": CONFIG.MODELS.FORTNITE_BTTF,
+  "RC TIME MACHINE": CONFIG.MODELS.FORTNITE_BTTF,
 };
 
-// Brand colors
-const COLORS = {
-  PRIMARY_RED: "#c41e3a",
-  TOSCA: "#4dbfb8",
-  CREAM: "#fff8e7",
-  WHITE: "#ffffff",
-  DARK: "#333333",
-  LIGHT_GRAY: "#f5f5f5",
-};
+function normalizeProductName(name) {
+  return typeof name === "string" ? name.trim().toUpperCase() : "";
+}
 
 
 /* ===== src/js/utils/formatter.js ===== */
@@ -84,25 +76,65 @@ function formatIDR(amount) {
 }
 
 /**
- * Format date to readable string
- * @param {Date} date - Date to format
- * @returns {string} Formatted date string
- */
-function formatDate(date) {
-  return new Intl.DateTimeFormat(CONFIG.LOCALE, {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(date));
-}
-
-/**
  * Parse price from formatted string
  * @param {string} priceText - Price text with currency
  * @returns {number} Parsed numeric value
  */
 function parsePrice(priceText) {
   return parseInt(priceText.replace(/[^\d]/g, "")) || 0;
+}
+
+/**
+ * Escape unsafe HTML characters to prevent injection
+ * @param {string} value - Raw string
+ * @returns {string} Escaped string
+ */
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, (char) => {
+    const map = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    };
+    return map[char] || char;
+  });
+}
+
+/**
+ * Show in-app toast notification
+ * @param {string} message - Notification message
+ * @param {("info"|"success"|"warning"|"error")} variant - Notification variant
+ * @param {number} duration - Auto hide duration in ms
+ */
+function showAppNotification(message, variant = "info", duration = 2800) {
+  if (!message || !document.body) return;
+
+  let stack = document.querySelector(".app-toast-stack");
+  if (!stack) {
+    stack = document.createElement("div");
+    stack.className = "app-toast-stack";
+    stack.setAttribute("aria-live", "polite");
+    stack.setAttribute("aria-atomic", "true");
+    document.body.appendChild(stack);
+  }
+
+  const toast = document.createElement("div");
+  toast.className = `app-toast app-toast--${variant}`;
+  toast.setAttribute("role", "status");
+  toast.textContent = message;
+  stack.appendChild(toast);
+
+  window.setTimeout(() => {
+    toast.classList.add("is-hiding");
+    window.setTimeout(() => {
+      toast.remove();
+      if (stack && stack.childElementCount === 0) {
+        stack.remove();
+      }
+    }, 260);
+  }, duration);
 }
 
 
@@ -133,19 +165,61 @@ function saveCart(cart) {
 function loadCart() {
   try {
     const savedCart = localStorage.getItem(CONFIG.CART_STORAGE_KEY);
-    const cart = savedCart ? JSON.parse(savedCart) : [];
+    const parsedCart = savedCart ? JSON.parse(savedCart) : [];
+    const cart = Array.isArray(parsedCart) ? parsedCart : [];
 
-    // Migrate legacy cart items (add model paths if missing)
-    return cart.map((item) => {
-      if (!item.model) {
-        item.model = getMigrationModelPath(item.name);
-      }
-      return item;
-    });
+    return cart.map((item, index) => sanitizeCartItem(item, index));
   } catch (error) {
     console.error("Failed to load cart:", error);
     return [];
   }
+}
+
+/**
+ * Validate and normalize cart item from storage
+ * @param {Object} rawItem - Raw cart item
+ * @param {number} index - Item index
+ * @returns {Object} Sanitized cart item
+ */
+function sanitizeCartItem(rawItem, index) {
+  const item = rawItem && typeof rawItem === "object" ? rawItem : {};
+
+  const parsedId = Number.parseInt(item.id, 10);
+  const safeId =
+    Number.isFinite(parsedId) && parsedId > 0 ? parsedId : Date.now() + index;
+
+  const safeName =
+    typeof item.name === "string" && item.name.trim()
+      ? item.name.trim().slice(0, 80)
+      : "RC ITEM";
+
+  const parsedPrice = Number(item.price);
+  const safePrice =
+    Number.isFinite(parsedPrice) && parsedPrice >= 0 ? parsedPrice : 0;
+
+  const parsedQty = Number.parseInt(item.quantity, 10);
+  const safeQuantity =
+    Number.isFinite(parsedQty) && parsedQty > 0 ? Math.min(parsedQty, 99) : 1;
+
+  let safeModel = "";
+  if (typeof item.model === "string") {
+    const model = item.model.trim();
+    if (/^\/?assets\/[a-zA-Z0-9_./-]+$/.test(model)) {
+      safeModel = model;
+    }
+  }
+
+  if (!safeModel) {
+    safeModel = getMigrationModelPath(safeName);
+  }
+
+  return {
+    id: safeId,
+    name: safeName,
+    price: safePrice,
+    quantity: safeQuantity,
+    model: safeModel || "",
+  };
 }
 
 /**
@@ -154,52 +228,8 @@ function loadCart() {
  * @returns {string} Model path
  */
 function getMigrationModelPath(productName) {
-  const modelMap = {
-    "RC HIGHWAYMAN": CONFIG.MODELS.RC_HIGHWAYMAN,
-    "RC ANNIHILATOR": CONFIG.MODELS.RC_ANNIHILATOR,
-    "RC SHVAN": CONFIG.MODELS.RC_SHVAN,
-    "FORTNITE TIME MACHINE": CONFIG.MODELS.FORTNITE_BTTF,
-  };
-  return modelMap[productName] || "";
-}
-
-/**
- * Clear cart from localStorage
- */
-function clearCart() {
-  try {
-    localStorage.removeItem(CONFIG.CART_STORAGE_KEY);
-  } catch (error) {
-    console.error("Failed to clear cart:", error);
-  }
-}
-
-/**
- * Save any data to localStorage
- * @param {string} key - Storage key
- * @param {*} value - Value to store
- */
-function saveData(key, value) {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.error(`Failed to save ${key}:`, error);
-  }
-}
-
-/**
- * Load any data from localStorage
- * @param {string} key - Storage key
- * @returns {*} Stored value or null
- */
-function loadData(key) {
-  try {
-    const data = localStorage.getItem(key);
-    return data ? JSON.parse(data) : null;
-  } catch (error) {
-    console.error(`Failed to load ${key}:`, error);
-    return null;
-  }
+  const normalizedName = normalizeProductName(productName);
+  return PRODUCT_MODEL_PATHS[normalizedName] || "";
 }
 
 
@@ -216,6 +246,7 @@ function loadData(key) {
 function initModals() {
   setupCloseButtons();
   setupBackdropClose();
+  setupEscapeClose();
   setupCheckoutButton();
 }
 
@@ -224,7 +255,7 @@ function initModals() {
  */
 function setupCloseButtons() {
   document.querySelectorAll(".close-modal").forEach((btn) => {
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", () => {
       const modalId = btn.dataset.modal;
       closeModal(modalId);
     });
@@ -254,17 +285,47 @@ function setupBackdropClose() {
 }
 
 /**
+ * Setup escape key close for active modal
+ */
+function setupEscapeClose() {
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+
+    const activeModals = Array.from(document.querySelectorAll(".modal.active"));
+    const topMostModal = activeModals[activeModals.length - 1];
+    if (topMostModal) {
+      closeModal(topMostModal.id);
+    }
+  });
+}
+
+/**
  * Setup checkout button
  */
 function setupCheckoutButton() {
   const checkoutBtn = document.getElementById("checkoutBtn");
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", () => {
-      // Cart check is in main.js with cart module access
+      if (typeof getCart === "function" && getCart().length === 0) {
+        showAppNotification(
+          "Keranjang masih kosong. Tambahkan produk terlebih dulu.",
+          "warning",
+        );
+        return;
+      }
+
       closeModal("cartModal");
       openModal("checkoutModal");
     });
   }
+}
+
+/**
+ * Sync body scroll lock based on modal state
+ */
+function syncBodyScrollLock() {
+  const hasActiveModal = Boolean(document.querySelector(".modal.active"));
+  document.body.style.overflow = hasActiveModal ? "hidden" : "";
 }
 
 /**
@@ -275,7 +336,7 @@ function openModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) {
     modal.classList.add("active");
-    document.body.style.overflow = "hidden";
+    syncBodyScrollLock();
   }
 }
 
@@ -287,20 +348,9 @@ function closeModal(modalId) {
   const modal = document.getElementById(modalId);
   if (modal) {
     modal.classList.remove("active");
-    document.body.style.overflow = "auto";
+    syncBodyScrollLock();
   }
 }
-
-/**
- * Check if modal is open
- * @param {string} modalId - Modal element ID
- * @returns {boolean} True if modal is open
- */
-function isModalOpen(modalId) {
-  const modal = document.getElementById(modalId);
-  return modal ? modal.classList.contains("active") : false;
-}
-
 
 /* ===== src/js/modules/cart.js ===== */
 
@@ -397,13 +447,8 @@ function addToCart(product, price) {
  * @returns {string} Model path
  */
 function getModelPathByProduct(productName) {
-  const modelMap = {
-    "RC HIGHWAYMAN": CONFIG.MODELS.RC_HIGHWAYMAN,
-    "RC ANNIHILATOR": CONFIG.MODELS.RC_ANNIHILATOR,
-    "RC SHVAN": CONFIG.MODELS.RC_SHVAN,
-    "FORTNITE TIME MACHINE": CONFIG.MODELS.FORTNITE_BTTF,
-  };
-  return modelMap[productName] || "";
+  const normalizedName = normalizeProductName(productName);
+  return PRODUCT_MODEL_PATHS[normalizedName] || "";
 }
 
 /**
@@ -424,12 +469,17 @@ function removeFromCart(itemId) {
 function updateQuantity(itemId, quantity) {
   const item = cart.find((item) => item.id === itemId);
   if (item) {
-    const newQuantity = Math.max(1, parseInt(quantity) || 1);
-    if (newQuantity < 1) {
+    const parsedQuantity = parseInt(quantity, 10);
+    if (!Number.isFinite(parsedQuantity)) {
+      return;
+    }
+
+    if (parsedQuantity < 1) {
       removeFromCart(itemId);
       return;
     }
-    item.quantity = newQuantity;
+
+    item.quantity = Math.min(parsedQuantity, 99);
     updateCart();
     saveCart(cart);
   }
@@ -440,6 +490,7 @@ function updateQuantity(itemId, quantity) {
  */
 function updateCart() {
   const cartItemsContainer = document.getElementById("cartItems");
+  if (!cartItemsContainer) return;
 
   // Update cart count
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -455,8 +506,15 @@ function updateCart() {
   } else {
     cartItemsContainer.innerHTML = cart
       .map((item) => {
+        const safeId = Number.parseInt(item.id, 10);
+        if (!Number.isFinite(safeId)) {
+          return "";
+        }
+
+        const safeName = escapeHTML(item.name);
+        const safeQuantity = Math.max(1, Number.parseInt(item.quantity, 10) || 1);
         const modelHTML = item.model
-          ? `<model-viewer src="${item.model}" alt="${item.name}" auto-rotate shadow-intensity="1" style="width: 100%; height: 100%; display: block;"></model-viewer>`
+          ? `<model-viewer src="${item.model}" alt="${safeName}" auto-rotate shadow-intensity="1" style="width: 100%; height: 100%; display: block;"></model-viewer>`
           : `<div style="background: #f5f5f5; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; font-size: 10px; text-align: center; color: #999; padding: 5px; box-sizing: border-box;">No 3D<br>Model</div>`;
 
         return `
@@ -465,15 +523,15 @@ function updateCart() {
           ${modelHTML}
         </div>
         <div class="cart-item-info">
-          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-name">${safeName}</div>
           <div class="cart-item-price">${formatIDR(item.price)}</div>
         </div>
         <div class="cart-item-quantity">
-          <button class="qty-btn" onclick="updateQuantity(${item.id}, ${item.quantity - 1})">−</button>
-          <span style="width: 30px; text-align: center;">${item.quantity}</span>
-          <button class="qty-btn" onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+          <button class="qty-btn" type="button" aria-label="Kurangi jumlah ${safeName}" onclick="updateQuantity(${safeId}, ${safeQuantity - 1})">−</button>
+          <span class="cart-qty-value">${safeQuantity}</span>
+          <button class="qty-btn" type="button" aria-label="Tambah jumlah ${safeName}" onclick="updateQuantity(${safeId}, ${safeQuantity + 1})">+</button>
         </div>
-        <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+        <button class="remove-btn" type="button" onclick="removeFromCart(${safeId})">Remove</button>
       </div>
     `;
       })
@@ -509,16 +567,24 @@ function initializeCartModelViewers() {
   });
 }
 
-/**
- * Update cart summary
- */
-function updateSummary() {
+function calculateCartTotals() {
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
   );
   const tax = subtotal * CONFIG.TAX_RATE;
-  const total = subtotal + tax;
+  return {
+    subtotal,
+    tax,
+    total: subtotal + tax,
+  };
+}
+
+/**
+ * Update cart summary
+ */
+function updateSummary() {
+  const { subtotal, tax, total } = calculateCartTotals();
 
   const subtotalEl = document.getElementById("subtotal");
   const taxEl = document.getElementById("tax");
@@ -534,6 +600,7 @@ function updateSummary() {
  */
 function updateCheckoutSummary() {
   const checkoutItemsContainer = document.getElementById("checkoutItems");
+  if (!checkoutItemsContainer) return;
 
   if (cart.length === 0) {
     checkoutItemsContainer.innerHTML =
@@ -543,7 +610,7 @@ function updateCheckoutSummary() {
       .map(
         (item) => `
       <div class="summary-row">
-        <span>${item.name} x${item.quantity}</span>
+        <span>${escapeHTML(item.name)} x${item.quantity}</span>
         <span>${formatIDR(item.price * item.quantity)}</span>
       </div>
     `,
@@ -551,12 +618,7 @@ function updateCheckoutSummary() {
       .join("");
   }
 
-  const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-  const tax = subtotal * CONFIG.TAX_RATE;
-  const total = subtotal + tax;
+  const { total } = calculateCartTotals();
 
   const totalEl = document.getElementById("checkoutTotal");
   if (totalEl) totalEl.textContent = formatIDR(total);
@@ -568,33 +630,7 @@ function updateCheckoutSummary() {
  */
 function showCartNotification(product) {
   if (!product) return;
-
-  const notification = document.createElement("div");
-  notification.style.cssText = `
-    position: fixed;
-    top: 80px;
-    right: 20px;
-    background-color: var(--primary-red);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    z-index: 2000;
-    animation: slideInRight 0.3s ease;
-    font-weight: bold;
-  `;
-  notification.textContent = `✓ ${product} added to cart!`;
-  document.body.appendChild(notification);
-
-  setTimeout(() => {
-    notification.style.opacity = "0";
-    notification.style.transition = "opacity 0.3s ease";
-    setTimeout(() => {
-      if (notification.parentNode) {
-        notification.remove();
-      }
-    }, 300);
-  }, 3000);
+  showAppNotification(`✓ ${product} added to cart`, "success");
 }
 
 /**
@@ -635,7 +671,7 @@ function initCheckout() {
       e.preventDefault();
 
       if (!checkoutForm || !checkoutForm.checkValidity()) {
-        alert("Please fill in all required fields");
+        showAppNotification("Please fill in all required fields.", "warning");
         payBtn.focus();
         return;
       }
@@ -650,19 +686,15 @@ function initCheckout() {
  */
 function processPayment() {
   const payBtn = document.getElementById("payBtn");
+  if (!payBtn) return;
+
   const originalText = payBtn.textContent;
 
   payBtn.disabled = true;
   payBtn.textContent = "PROCESSING...";
 
   setTimeout(() => {
-    // Calculate total
-    const cart = getCart();
-    const subtotal = cart.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0,
-    );
-    const total = subtotal + subtotal * CONFIG.TAX_RATE;
+    const { total } = calculateCartTotals();
 
     showPaymentSuccess(total);
 
@@ -698,20 +730,11 @@ function showPaymentSuccess(totalAmount) {
   if (continueBtn) {
     continueBtn.onclick = () => {
       closeModal("successModal");
-      location.reload();
+      showAppNotification("Pembayaran berhasil. Selamat berbelanja lagi!", "success");
+      scrollToSection("models");
     };
   }
 }
-
-/**
- * Validate form
- * @returns {boolean} True if form is valid
- */
-function validateCheckoutForm() {
-  const form = document.getElementById("checkoutForm");
-  return form ? form.checkValidity() : false;
-}
-
 
 /* ===== src/js/modules/productPreview.js ===== */
 
@@ -773,7 +796,7 @@ function handlePreviewAddToCart() {
   }
 
   if (priceText === "COMING SOON") {
-    alert("Product is not available for purchase yet.");
+    showAppNotification("Product is not available for purchase yet.", "info");
     return;
   }
 
@@ -784,7 +807,10 @@ function handlePreviewAddToCart() {
     showCartNotification(productName);
   } else {
     console.error("Invalid price:", priceText);
-    alert("Could not parse product price.");
+    showAppNotification(
+      "Could not read product price. Please try again.",
+      "error",
+    );
   }
 }
 
@@ -809,7 +835,7 @@ function showModelPreview(productData) {
       specs = JSON.parse(productData.specs);
     }
   } catch (e) {
-    console.log("Could not parse specs");
+    console.warn("Could not parse specs");
   }
 
   // Update modal content
@@ -916,26 +942,6 @@ function setupElementAnimations() {
     heroContent.classList.add("fade-in-up");
   }
 }
-
-/**
- * Add fade-in animation to element
- * @param {Element} element - DOM element
- * @param {number} delay - Animation delay in ms
- */
-function animateElement(element, delay = 0) {
-  setTimeout(() => {
-    element.classList.add("fade-in-up");
-  }, delay);
-}
-
-/**
- * Remove animation class
- * @param {Element} element - DOM element
- */
-function removeAnimation(element) {
-  element.classList.remove("fade-in-up");
-}
-
 
 /* ===== src/js/modules/modelViewer.js ===== */
 
@@ -1061,17 +1067,6 @@ function changeModelSource(selector, modelSrc) {
   }
 }
 
-/**
- * Get current model source
- * @param {string} selector - CSS selector for viewer
- * @returns {string} Current model source
- */
-function getModelSource(selector) {
-  const viewer = document.querySelector(selector);
-  return viewer ? viewer.src : "";
-}
-
-
 /* ===== src/js/modules/navigation.js ===== */
 
 /* ========================================
@@ -1085,6 +1080,36 @@ function getModelSource(selector) {
 function initNavigation() {
   setupNavLinks();
   setupScrollListener();
+  updateActiveNav();
+}
+
+/**
+ * Get sticky navigation offset for anchor scrolling
+ * @returns {number}
+ */
+function getNavigationOffset() {
+  const navbar = document.querySelector(".navbar");
+  const border = document.querySelector(".checkered-top-border");
+  const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+  const borderHeight = border ? border.getBoundingClientRect().height : 0;
+
+  return Math.round(navbarHeight + borderHeight + 12);
+}
+
+/**
+ * Smooth scroll helper that respects sticky nav height
+ * @param {Element} targetElement
+ */
+function smoothScrollToElement(targetElement) {
+  if (!targetElement) return;
+
+  const offset = getNavigationOffset();
+  const top = targetElement.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: "smooth",
+  });
 }
 
 /**
@@ -1098,7 +1123,7 @@ function setupNavLinks() {
         e.preventDefault();
         const target = document.querySelector(href);
         if (target) {
-          target.scrollIntoView({ behavior: "smooth" });
+          smoothScrollToElement(target);
         }
       }
     });
@@ -1109,7 +1134,19 @@ function setupNavLinks() {
  * Setup scroll listener for active nav update
  */
 function setupScrollListener() {
-  window.addEventListener("scroll", updateActiveNav);
+  let ticking = false;
+  window.addEventListener(
+    "scroll",
+    () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(() => {
+        updateActiveNav();
+        ticking = false;
+      });
+    },
+    { passive: true },
+  );
 }
 
 /**
@@ -1118,21 +1155,24 @@ function setupScrollListener() {
 function updateActiveNav() {
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".nav-menu a");
+  const activationOffset = Math.max(72, getNavigationOffset() - 20);
 
   let current = "";
 
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 100;
+    const sectionTop = section.offsetTop - activationOffset;
     if (window.scrollY >= sectionTop) {
       current = section.getAttribute("id");
     }
   });
 
+  if (!current && sections.length) {
+    current = sections[0].getAttribute("id");
+  }
+
   navLinks.forEach((link) => {
-    link.style.borderBottom = "none";
-    if (link.getAttribute("href") === `#${current}`) {
-      link.style.borderBottom = "2px solid white";
-    }
+    const isActive = link.getAttribute("href") === `#${current}`;
+    link.classList.toggle("is-active", isActive);
   });
 }
 
@@ -1143,28 +1183,9 @@ function updateActiveNav() {
 function scrollToSection(sectionId) {
   const section = document.querySelector(`#${sectionId}`);
   if (section) {
-    section.scrollIntoView({ behavior: "smooth" });
+    smoothScrollToElement(section);
   }
 }
-
-/**
- * Get current section
- * @returns {string} Current section ID
- */
-function getCurrentSection() {
-  const sections = document.querySelectorAll("section");
-  let current = "";
-
-  sections.forEach((section) => {
-    const sectionTop = section.offsetTop - 100;
-    if (window.scrollY >= sectionTop) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  return current;
-}
-
 
 /* ===== src/js/modules/buttons.js ===== */
 
@@ -1207,7 +1228,7 @@ function handleProductButtons() {
 
   viewButtons.forEach((btn) => {
     if (!btn.textContent.includes("NOTIFY")) {
-      btn.addEventListener("click", (e) => {
+      btn.addEventListener("click", () => {
         const card = btn.closest(".product-card");
         const productName = card?.querySelector("h3")?.textContent;
 
@@ -1224,14 +1245,7 @@ function handleProductButtons() {
  * @param {string} productName - Product name
  */
 function handleProductView(productName) {
-  const modelMap = {
-    "RC HIGHWAYMAN": CONFIG.MODELS.RC_HIGHWAYMAN,
-    "RC ANNIHILATOR": CONFIG.MODELS.RC_ANNIHILATOR,
-    "RC SHVAN": CONFIG.MODELS.RC_SHVAN,
-    "RC TIME MACHINE": CONFIG.MODELS.FORTNITE_BTTF,
-  };
-
-  const modelSrc = modelMap[productName];
+  const modelSrc = getModelPathByProduct(productName);
   if (modelSrc) {
     changeModelSource(".hero-model model-viewer", modelSrc);
     scrollToSection("home");
@@ -1249,7 +1263,10 @@ function handleNotifyButton() {
 
   if (notifyBtn) {
     notifyBtn.addEventListener("click", () => {
-      alert("Thank you! We'll notify you when new models are available.");
+      showAppNotification(
+        "Thanks. We'll notify you when new models are available.",
+        "info",
+      );
     });
   }
 }
@@ -1285,32 +1302,10 @@ function initializeApp() {
   initCheckout();
   initProductPreview();
 
-  // Load cart from storage
-  loadCart();
-
-  // Setup checkout button with cart validation
-  setupCheckoutValidation();
-
   // Setup error handling
   setupErrorHandlers();
 
   console.log("✅ App initialized successfully");
-}
-
-/**
- * Setup checkout validation
- */
-function setupCheckoutValidation() {
-  const checkoutBtn = document.getElementById("checkoutBtn");
-  if (checkoutBtn) {
-    checkoutBtn.addEventListener("click", (e) => {
-      const cart = getCart();
-      if (cart.length === 0) {
-        e.preventDefault();
-        alert("Your cart is empty!");
-      }
-    });
-  }
 }
 
 /**
@@ -1349,4 +1344,330 @@ document.addEventListener("DOMContentLoaded", initializeApp);
 window.updateQuantity = updateQuantity;
 window.removeFromCart = removeFromCart;
 
+/* ===== Intro Sequence (Scroll Controlled) ===== */
+(function initIntroSequence() {
+  const TOTAL_FRAMES = 240;
+  const MAX_PRELOAD_CONCURRENCY = 12;
+  const FIRST_FRAME = 1;
+  const FRAME_PREFIX = "assets/sequens/ezgif-frame-";
+  const FRAME_EXT = ".jpg";
 
+  const sequenceOverlay = document.getElementById("sequenceOverlay");
+  const sequenceTrack = document.getElementById("sequenceTrack");
+  const canvas = document.getElementById("sequenceCanvas");
+  const loadingOverlay = document.getElementById("sequenceLoadingOverlay");
+  const loadingBarFill = document.getElementById("sequenceLoadingBarFill");
+  const loadedFramesText = document.getElementById("sequenceLoadedFrames");
+  const scrollHint = document.getElementById("sequenceScrollHint");
+
+  if (
+    !sequenceOverlay ||
+    !sequenceTrack ||
+    !canvas ||
+    !loadingOverlay ||
+    !loadingBarFill ||
+    !loadedFramesText ||
+    !scrollHint
+  ) {
+    return;
+  }
+
+  const ctx = canvas.getContext("2d", { alpha: false, desynchronized: true });
+  if (!ctx) {
+    document.body.classList.remove("intro-loading");
+    return;
+  }
+
+  const frames = new Array(TOTAL_FRAMES);
+  let loadedCount = 0;
+  let currentFrame = 0;
+  let rafPending = false;
+  let isSequenceReady = false;
+  let isSequenceFinished = false;
+  let failedCount = 0;
+
+  function getFramePath(frameNumber) {
+    return `${FRAME_PREFIX}${String(frameNumber).padStart(3, "0")}${FRAME_EXT}`;
+  }
+
+  function clamp(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function updateLoaderUI() {
+    const progress = loadedCount / TOTAL_FRAMES;
+    loadingBarFill.style.width = `${Math.round(progress * 100)}%`;
+    loadedFramesText.textContent = String(loadedCount);
+  }
+
+  function resolveRenderableFrame(targetIndex) {
+    if (frames[targetIndex]) {
+      return frames[targetIndex];
+    }
+
+    for (let offset = 1; offset < TOTAL_FRAMES; offset += 1) {
+      const prevIndex = targetIndex - offset;
+      if (prevIndex >= 0 && frames[prevIndex]) {
+        return frames[prevIndex];
+      }
+
+      const nextIndex = targetIndex + offset;
+      if (nextIndex < TOTAL_FRAMES && frames[nextIndex]) {
+        return frames[nextIndex];
+      }
+    }
+
+    return null;
+  }
+
+  function drawFrame(index) {
+    const image = resolveRenderableFrame(index);
+    if (!image) {
+      return;
+    }
+
+    const viewWidth = canvas.clientWidth;
+    const viewHeight = canvas.clientHeight;
+    if (!viewWidth || !viewHeight) {
+      return;
+    }
+
+    const imageRatio = image.naturalWidth / image.naturalHeight;
+    const viewportRatio = viewWidth / viewHeight;
+
+    let drawWidth;
+    let drawHeight;
+    let offsetX;
+    let offsetY;
+
+    if (imageRatio > viewportRatio) {
+      drawHeight = viewHeight;
+      drawWidth = drawHeight * imageRatio;
+      offsetX = (viewWidth - drawWidth) * 0.5;
+      offsetY = 0;
+    } else {
+      drawWidth = viewWidth;
+      drawHeight = drawWidth / imageRatio;
+      offsetX = 0;
+      offsetY = (viewHeight - drawHeight) * 0.5;
+    }
+
+    ctx.clearRect(0, 0, viewWidth, viewHeight);
+    ctx.drawImage(image, offsetX, offsetY, drawWidth, drawHeight);
+  }
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const width = Math.round(window.innerWidth * dpr);
+    const height = Math.round(window.innerHeight * dpr);
+
+    if (canvas.width !== width || canvas.height !== height) {
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    drawFrame(currentFrame);
+  }
+
+  function updateTrackHeight() {
+    const viewportHeight = window.innerHeight || 1;
+    const pixelsPerFrame =
+      window.innerWidth >= 1280 ? 9 : window.innerWidth >= 768 ? 7 : 5.5;
+    const sequenceSpan = Math.max(
+      (TOTAL_FRAMES - 1) * pixelsPerFrame,
+      viewportHeight * 2.4,
+    );
+    sequenceTrack.style.height = `${Math.round(viewportHeight + sequenceSpan)}px`;
+  }
+
+  function getScrollProgress() {
+    const startY = sequenceTrack.offsetTop;
+    const endY = startY + sequenceTrack.offsetHeight - window.innerHeight;
+
+    if (endY <= startY) {
+      return 1;
+    }
+
+    return clamp((window.scrollY - startY) / (endY - startY), 0, 1);
+  }
+
+  function finishSequence() {
+    if (isSequenceFinished) {
+      return;
+    }
+
+    isSequenceFinished = true;
+    sequenceTrack.classList.add("is-complete");
+    scrollHint.classList.remove("is-visible");
+    sequenceOverlay.classList.add("is-fading");
+    window.removeEventListener("scroll", requestRender);
+  }
+
+  function renderFromScroll() {
+    rafPending = false;
+
+    if (!isSequenceReady || isSequenceFinished) {
+      return;
+    }
+
+    const progress = getScrollProgress();
+    const targetFrame = Math.round(progress * (TOTAL_FRAMES - 1));
+
+    if (targetFrame !== currentFrame) {
+      currentFrame = targetFrame;
+      drawFrame(currentFrame);
+    }
+
+    if (progress >= 1) {
+      finishSequence();
+      return;
+    }
+
+    if (progress > 0.015) {
+      scrollHint.classList.remove("is-visible");
+    } else {
+      scrollHint.classList.add("is-visible");
+    }
+  }
+
+  function requestRender() {
+    if (rafPending) {
+      return;
+    }
+
+    rafPending = true;
+    window.requestAnimationFrame(renderFromScroll);
+  }
+
+  function preloadFrame(frameNumber) {
+    return new Promise((resolve) => {
+      const frameIndex = frameNumber - FIRST_FRAME;
+      const image = new Image();
+      image.decoding = "async";
+
+      let finalized = false;
+      const finalize = () => {
+        if (finalized) {
+          return;
+        }
+        finalized = true;
+
+        frames[frameIndex] = image;
+        loadedCount += 1;
+        updateLoaderUI();
+
+        if (frameIndex === 0) {
+          currentFrame = 0;
+          drawFrame(0);
+        }
+
+        resolve();
+      };
+
+      image.onload = () => {
+        if (typeof image.decode === "function") {
+          image.decode().catch(() => {}).finally(finalize);
+          return;
+        }
+
+        finalize();
+      };
+
+      image.onerror = () => {
+        frames[frameIndex] = null;
+        failedCount += 1;
+        loadedCount += 1;
+        updateLoaderUI();
+        resolve();
+      };
+
+      image.src = getFramePath(frameNumber);
+    });
+  }
+
+  async function preloadAllFrames() {
+    await preloadFrame(FIRST_FRAME);
+
+    const frameNumbers = [];
+    for (let frame = FIRST_FRAME + 1; frame <= TOTAL_FRAMES; frame += 1) {
+      frameNumbers.push(frame);
+    }
+
+    const concurrency = Math.min(
+      MAX_PRELOAD_CONCURRENCY,
+      frameNumbers.length || 1,
+    );
+    const workers = Array.from({ length: concurrency }, async (_, workerIdx) => {
+      for (let i = workerIdx; i < frameNumbers.length; i += concurrency) {
+        await preloadFrame(frameNumbers[i]);
+      }
+    });
+
+    await Promise.all(workers);
+  }
+
+  function onSequenceReady() {
+    if (isSequenceReady) return;
+
+    isSequenceReady = true;
+    document.body.classList.remove("intro-loading");
+    loadingOverlay.classList.add("is-hidden");
+
+    scrollHint.hidden = false;
+    window.requestAnimationFrame(() => {
+      scrollHint.classList.add("is-visible");
+    });
+
+    if (failedCount > 0) {
+      showAppNotification(
+        `${failedCount} frame gagal dimuat. Sequence tetap berjalan.`,
+        "warning",
+        3800,
+      );
+    }
+
+    requestRender();
+  }
+
+  async function bootSequence() {
+    updateTrackHeight();
+    resizeCanvas();
+    updateLoaderUI();
+
+    window.addEventListener("scroll", requestRender, { passive: true });
+    window.addEventListener(
+      "resize",
+      () => {
+        updateTrackHeight();
+        resizeCanvas();
+        if (!isSequenceFinished) {
+          requestRender();
+        }
+      },
+      { passive: true },
+    );
+
+    try {
+      await preloadAllFrames();
+    } catch (error) {
+      console.error("Sequence preload failed:", error);
+      showAppNotification(
+        "Gagal preload sequence sepenuhnya. Menjalankan mode fallback.",
+        "warning",
+        4000,
+      );
+    } finally {
+      onSequenceReady();
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bootSequence, { once: true });
+  } else {
+    bootSequence();
+  }
+})();
