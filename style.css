@@ -68,7 +68,6 @@
   --z-notification: 2000;
 }
 
-
 /* ===== src/css/_base.css ===== */
 
 /* ========================================
@@ -163,11 +162,9 @@ select:focus {
   display: none;
 }
 
-
 /* ===== src/css/components/navbar.css ===== */
 
 /* Navbar rules are consolidated in the final refinement section. */
-
 
 /* ===== src/css/components/hero.css ===== */
 
@@ -289,7 +286,6 @@ model-viewer {
   }
 }
 
-
 /* ===== src/css/components/features.css ===== */
 
 /* ========================================
@@ -316,8 +312,8 @@ model-viewer {
     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   text-align: center;
   transition: var(--transition-normal);
-  border-top: 5px solid var(--tosca);
   border: 1px solid rgba(77, 191, 184, 0.2);
+  border-top: 5px solid var(--tosca);
   min-height: 220px;
   display: flex;
   flex-direction: column;
@@ -366,7 +362,6 @@ model-viewer {
     min-height: 200px;
   }
 }
-
 
 /* ===== src/css/components/products.css ===== */
 
@@ -629,7 +624,6 @@ model-viewer {
   }
 }
 
-
 /* ===== src/css/components/gallery.css ===== */
 
 /* ========================================
@@ -744,7 +738,6 @@ model-viewer {
     font-size: 2rem;
   }
 }
-
 
 /* ===== src/css/components/modal.css ===== */
 
@@ -975,7 +968,6 @@ model-viewer {
   }
 }
 
-
 /* ===== src/css/components/forms.css ===== */
 
 /* ========================================
@@ -1180,29 +1172,20 @@ model-viewer {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  border: 1px solid rgba(111, 235, 225, 0.55);
+  border: 1px solid rgba(77, 191, 184, 0.55);
   border-radius: 999px;
   padding: 0.2rem 0.3rem;
   margin: 0 var(--spacing-md);
-  background: linear-gradient(
-    135deg,
-    rgba(14, 28, 58, 0.78) 0%,
-    rgba(15, 21, 47, 0.72) 100%
-  );
+  background: rgba(77, 191, 184, 0.12);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.14),
-    0 0 16px rgba(111, 235, 225, 0.18);
+    0 0 16px rgba(77, 191, 184, 0.18);
 }
 
 .qty-btn {
-  background: radial-gradient(
-    circle at 30% 30%,
-    rgba(255, 255, 255, 0.2) 0%,
-    rgba(255, 255, 255, 0.04) 48%,
-    rgba(255, 255, 255, 0.02) 100%
-  );
-  border: 1px solid rgba(111, 235, 225, 0.52);
-  color: #86fff4;
+  background: rgba(77, 191, 184, 0.1);
+  border: 1px solid rgba(77, 191, 184, 0.52);
+  color: rgba(77, 191, 184, 0.95);
   cursor: pointer;
   font-size: 1.02rem;
   font-weight: 700;
@@ -1213,7 +1196,7 @@ model-viewer {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  text-shadow: 0 0 8px rgba(134, 255, 244, 0.45);
+  text-shadow: 0 0 8px rgba(77, 191, 184, 0.45);
   transition: var(--transition-fast);
 }
 
@@ -1261,7 +1244,7 @@ model-viewer {
   margin-top: var(--spacing-xl);
   padding: var(--spacing-xl);
   background: var(--light-gray);
-  border-radius: 0;
+  border-radius: var(--radius-md);
 }
 
 .checkout-summary {
@@ -1356,7 +1339,6 @@ model-viewer {
     flex-direction: column;
   }
 }
-
 
 /* ===== src/css/components/footer.css ===== */
 
@@ -1472,7 +1454,6 @@ model-viewer {
     text-align: center;
   }
 }
-
 
 /* ===== src/css/utilities/animations.css ===== */
 
@@ -1592,7 +1573,6 @@ model-viewer {
   animation: fadeInUp 0.8s ease-out;
 }
 
-
 /* ===== src/css/utilities/responsive.css ===== */
 
 /* ========================================
@@ -1625,7 +1605,6 @@ model-viewer {
   section {
     padding: var(--spacing-2xl) var(--spacing-lg);
   }
-
 }
 
 /* Small Mobile (480px and below) */
@@ -2126,8 +2105,16 @@ body {
   color: var(--cream);
   background-color: #060912;
   background-image:
-    radial-gradient(circle at 15% 12%, rgba(255, 52, 120, 0.34), transparent 40%),
-    radial-gradient(circle at 85% 14%, rgba(77, 237, 224, 0.22), transparent 36%),
+    radial-gradient(
+      circle at 15% 12%,
+      rgba(255, 52, 120, 0.34),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 85% 14%,
+      rgba(77, 237, 224, 0.22),
+      transparent 36%
+    ),
     radial-gradient(circle at 50% 72%, rgba(62, 81, 173, 0.2), transparent 42%),
     linear-gradient(150deg, #090b18 0%, #0c1025 45%, #090716 100%);
   background-attachment: fixed;
@@ -2172,9 +2159,21 @@ select {
 
 .hero-banner {
   background:
-    radial-gradient(circle at 12% 18%, rgba(255, 47, 114, 0.24), transparent 38%),
-    radial-gradient(circle at 78% 22%, rgba(64, 230, 216, 0.2), transparent 42%),
-    linear-gradient(145deg, rgba(11, 14, 34, 0.85) 0%, rgba(17, 11, 38, 0.78) 100%);
+    radial-gradient(
+      circle at 12% 18%,
+      rgba(255, 47, 114, 0.24),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 78% 22%,
+      rgba(64, 230, 216, 0.2),
+      transparent 42%
+    ),
+    linear-gradient(
+      145deg,
+      rgba(11, 14, 34, 0.85) 0%,
+      rgba(17, 11, 38, 0.78) 100%
+    );
   border: 1px solid rgba(225, 238, 255, 0.17);
   box-shadow: var(--shadow-lg);
   border-radius: 20px;
@@ -2825,6 +2824,36 @@ body::after {
   }
 }
 
+.reviews h2 {
+  text-align: center;
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-2xl);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: var(--spacing-lg);
+  
+  /* Efek warna teks gradasi premium */
+  background: linear-gradient(92deg, rgba(255, 255, 255, 1) 0%, rgba(221, 247, 255, 0.98) 52%, rgba(245, 208, 137, 0.95) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: 100%;
+}
+
+/* Efek garis bawah neon (Pink & Cyan) */
+.reviews h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(64, 230, 216, 0.2), rgba(64, 230, 216, 0.95), rgba(255, 47, 114, 0.95), rgba(255, 47, 114, 0.2));
+  border-radius: 2px;
+}
+
 /* ===== Premium Luxe Refinement ===== */
 :root {
   --luxe-gold: #f5d089;
@@ -2833,9 +2862,21 @@ body::after {
 
 body {
   background-image:
-    radial-gradient(circle at 14% 9%, rgba(255, 64, 131, 0.24), transparent 36%),
-    radial-gradient(circle at 84% 13%, rgba(64, 230, 216, 0.16), transparent 33%),
-    radial-gradient(circle at 50% 78%, rgba(76, 103, 215, 0.16), transparent 38%),
+    radial-gradient(
+      circle at 14% 9%,
+      rgba(255, 64, 131, 0.24),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 84% 13%,
+      rgba(64, 230, 216, 0.16),
+      transparent 33%
+    ),
+    radial-gradient(
+      circle at 50% 78%,
+      rgba(76, 103, 215, 0.16),
+      transparent 38%
+    ),
     linear-gradient(155deg, #070916 0%, #0c1128 48%, #070613 100%);
 }
 
@@ -3022,10 +3063,8 @@ body {
   max-width: 280px;
   width: auto;
   display: block;
-  filter:
-    drop-shadow(0 0 16px rgba(255, 72, 142, 0.4))
-    drop-shadow(0 0 10px rgba(64, 230, 216, 0.24))
-    saturate(1.1);
+  filter: drop-shadow(0 0 16px rgba(255, 72, 142, 0.4))
+    drop-shadow(0 0 10px rgba(64, 230, 216, 0.24)) saturate(1.1);
 }
 
 .hero-banner {
@@ -3159,7 +3198,6 @@ body {
   }
 }
 
-
 /* ===== Authentication Modal Extensions ===== */
 
 .auth-tabs {
@@ -3185,10 +3223,16 @@ body {
 }
 
 .auth-tab.active {
-  background: linear-gradient(130deg, rgba(64, 230, 216, 0.15) 0%, rgba(255, 47, 114, 0.15) 100%);
+  background: linear-gradient(
+    130deg,
+    rgba(64, 230, 216, 0.15) 0%,
+    rgba(255, 47, 114, 0.15) 100%
+  );
   border-color: rgba(64, 230, 216, 0.8);
   color: #ffffff;
-  box-shadow: 0 0 20px rgba(64, 230, 216, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+  box-shadow:
+    0 0 20px rgba(64, 230, 216, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .auth-tab:hover:not(.active) {
@@ -3225,7 +3269,7 @@ body {
   text-decoration: none;
 }
 
-/* ===== Perfect Infinite Review Marquee ===== */
+/* ===== PERFECT INFINITE MARQUEE ===== */
 .reviews {
   padding: var(--spacing-3xl) 0;
   overflow: hidden;
@@ -3236,162 +3280,59 @@ body {
   padding: 2rem 0;
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
 }
 
 .marquee-wrapper {
   display: flex;
   width: max-content;
-  /* Animasi bergeser sejauh 50% (tepat 1 track) */
-  animation: marqueeScroll 30s linear infinite;
+  /* Bergeser sejauh tepat 1 track (50% dari total wrapper) */
+  animation: marqueeScroll 25s linear infinite;
 }
 
 .review-track {
   display: flex;
   gap: 2rem;
-  /* Padding kanan ini adalah jarak penyambung antara Track 1 dan Track 2 */
-  padding-right: 2rem; 
+  /* PENTING: Padding ini yang membuat ujung track 1 nyambung sempurna ke track 2 */
+  padding-right: 2rem;
 }
 
-/* Pause saat di hover */
 .marquee-wrapper:hover {
   animation-play-state: paused;
 }
 
 @keyframes marqueeScroll {
-  0% { transform: translateX(0); }
-  /* Menggeser persis setengah dari total lebar wrapper (lebar 1 track) */
-  100% { transform: translateX(-50%); } 
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .review-card {
   width: 420px;
   flex-shrink: 0;
-  background: linear-gradient(165deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-}
-
-/* Layout Form yang dipusatkan di bawah */
-.centered-form {
-  max-width: 600px;
-  margin: 3rem auto 0;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  text-align: center;
-  border-radius: var(--radius-lg);
-}
-
-.form-row-flex {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.form-row-flex input { flex: 2; }
-.form-row-flex select { flex: 1; }
-
-.centered-form textarea {
-  width: 100%;
-  margin-bottom: 1.5rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
-  padding: 1rem;
-  border-radius: var(--radius-sm);
-}
-
-/* ===== PERBAIKAN STYLING CUSTOMER REVIEWS & FORM ===== */
-
-/* 1. Kembalikan Posisi H2 ke Tengah beserta Garis Neonnya */
-.reviews h2 {
-  text-align: center;
-  color: #ffffff;
-  font-size: clamp(2rem, 3vw, 2.5rem);
-  margin-bottom: var(--spacing-2xl);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: relative;
-  padding-bottom: var(--spacing-lg);
-  text-shadow: 0 6px 24px rgba(1, 9, 34, 0.55);
-  width: 100%;
-}
-
-.reviews h2::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 120px;
-  height: 3px;
-  background: linear-gradient(90deg, rgba(64, 230, 216, 0.2), rgba(64, 230, 216, 0.95), rgba(255, 47, 114, 0.95), rgba(255, 47, 114, 0.2));
-  border-radius: 2px;
-}
-
-/* 2. Perbaiki Input Kolom yang Putih Menjadi Tema Premium Glassmorphism */
-.centered-form input,
-.centered-form select,
-.centered-form textarea {
-  width: 100%;
-  background: rgba(234, 242, 255, 0.06);
-  border: 1px solid rgba(226, 238, 255, 0.2);
-  color: #eef5ff;
-  padding: 1rem;
-  border-radius: var(--radius-sm);
-  font-family: var(--font-family);
-  font-size: var(--font-size-base);
-  transition: all 0.3s ease;
-  margin-bottom: 1rem;
-}
-
-.centered-form textarea {
-  margin-bottom: 1.5rem;
-  resize: vertical;
-}
-
-/* Mengubah warna tulisan panduan (placeholder) agar lebih elegan */
-.centered-form input::placeholder,
-.centered-form textarea::placeholder {
-  color: rgba(217, 228, 247, 0.5);
-}
-
-/* Memberikan efek cahaya neon saat kolom di-klik/diisi */
-.centered-form input:focus,
-.centered-form select:focus,
-.centered-form textarea:focus {
-  outline: none;
-  border-color: rgba(64, 230, 216, 0.8);
-  box-shadow: 0 0 15px rgba(64, 230, 216, 0.2);
-  background: rgba(234, 242, 255, 0.1);
-}
-
-/* Memperbaiki dropdown rating agar tidak berwarna terang */
-.centered-form select option {
-  background: var(--dark);
-  color: white;
-}
-
-/* Responsivitas form baris */
-.form-row-flex {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 0;
-}
-.form-row-flex input { flex: 2; }
-.form-row-flex select { flex: 1; }
-
-@media (max-width: 768px) {
-  .form-row-flex {
-    flex-direction: column;
-    gap: 0;
-  }
-}
-
-.leave {
-  padding-bottom: 20px;
 }
