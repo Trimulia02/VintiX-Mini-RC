@@ -129,6 +129,10 @@ body {
   display: flex;
   flex-direction: column;
   transition: 0.5s ease-in-out;
+  background-color: rgba(129, 124, 127, 0.412);
+  border-radius: 20px;
+  min-height: 500px;
+  padding: 40px 36px;
 }
 
 .register-container {
@@ -138,6 +142,11 @@ body {
   display: flex;
   flex-direction: column;
   transition: 0.5s ease-in-out;
+  background-color: rgba(129, 124, 127, 0.412);
+  border-radius: 12px;
+  min-height: 500px;
+  padding: 30px 36px 24px;
+  gap: 16px;
 }
 
 .top span {
