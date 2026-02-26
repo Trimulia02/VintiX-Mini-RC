@@ -1,700 +1,636 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="VintiX Mini RC - Premium RC Car Models" />
-    <title>VintiX Mini RC - Premium RC Cars</title>
 
-    <!-- Google Model Viewer -->
-    <script
-      type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-    ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VintiX Mini RC - Premium RC Car Models" />
+  <title>VintiX Mini RC - Premium RC Cars</title>
 
-    <!-- Premium Typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Google Model Viewer -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-      <div class="nav-container">
-        <a class="logo" href="#home" aria-label="VintiX RC">
-          <img src="assets/logo/vintix-logo-nav.png" alt="VintiX RC" />
-        </a>
-        <ul class="nav-menu">
-          <li><a href="#home">HOME</a></li>
-          <li><a href="#models">OUR MODELS</a></li>
-          <li><a href="#features">FEATURES</a></li>
-          <li><a href="#gallery">GALLERY</a></li>
-          <li><a href="#" onclick="document.getElementById('authModal').classList.add('active'); return false;">LOGIN</a></li>
-        </ul>
+  <!-- Premium Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a class="logo" href="#home" aria-label="VintiX RC">
+        <img src="assets/logo/vintix-logo-nav.png" alt="VintiX RC" />
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#models">OUR MODELS</a></li>
+        <li><a href="#features">FEATURES</a></li>
+        <li><a href="#gallery">GALLERY</a></li>
+        <li><a href="#reviews">COMMENT</a></li>
+      </ul>
+
+      <!-- NAV ICONS RIGHT SIDE -->
+      <div class="nav-icons">
+        <button class="btn-primary" onclick="openModal('authModal')">
+          LOGIN
+        </button>
+
         <div class="cart-icon" id="cartIcon">
           <span class="cart-emoji">🛒</span>
           <span class="cart-count" id="cartCount">0</span>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
-    <!-- Decorative Top Border -->
-    <div class="checkered-top-border"></div>
+  <!-- Decorative Top Border -->
+  <div class="checkered-top-border"></div>
 
-    <!-- Hero Banner -->
-    <section class="hero-banner" id="home">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h2>THE HOME OF</h2>
-          <h1>PREMIUM RC CARS</h1>
-          <p>Experience the Ultimate in Remote Control Vehicles</p>
-          <button
-            class="btn-primary"
-            type="button"
-            data-scroll-target="models"
-          >
-            EXPLORE NOW
-          </button>
+  <!-- Hero Banner -->
+  <section class="hero-banner" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h2>THE HOME OF</h2>
+        <h1>PREMIUM RC CARS</h1>
+        <p>Experience the Ultimate in Remote Control Vehicles</p>
+        <button class="btn-primary" type="button" data-scroll-target="models">
+          EXPLORE NOW
+        </button>
+      </div>
+      <div class="hero-model">
+        <model-viewer src="assets/car-model/rc_highwayman_-_low_poly_model/scene.gltf" alt="RC Highwayman" auto-rotate
+          camera-controls shadow-intensity="1">
+        </model-viewer>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Boxes -->
+  <section class="features" id="features">
+    <div class="feature-box">
+      <div class="feature-icon">🏎️</div>
+      <h3>DESKTOP PERFORMANCE</h3>
+      <p>Engineered for smooth acceleration and tight cornering. Turn your boring work desk into a thrilling miniature
+        race track.</p>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon">✨</div>
+      <h3>MICRO SCALE DESIGN</h3>
+      <p>Compact scale with premium low-poly aesthetics. Looks just as stunning displayed next to your monitor as it
+        does racing.</p>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon">🎮</div>
+      <h3>PINPOINT CONTROL</h3>
+      <p>Zero-latency 2.4GHz transmitter ensures ultra-responsive handling. Easily drift around your keyboard and coffee
+        mug.</p>
+      <h3>HIGH PERFORMANCE</h3>
+      <p>Built for speed and precision</p>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon">✨</div>
+      <h3>LOW POLY DESIGN</h3>
+      <p>Modern aesthetic meets functionality</p>
+    </div>
+    <div class="feature-box">
+      <div class="feature-icon">🎮</div>
+      <h3>FULL CONTROL</h3>
+      <p>Interactive 3D model viewer</p>
+    </div>
+  </section>
+
+  <!-- Product Showcase -->
+  <section class="products" id="models">
+    <h2>OUR RC MODELS</h2>
+    <div class="products-grid">
+      <!-- RC Highwayman -->
+      <div class="product-card" data-model="assets/car-model/rc_highwayman_-_low_poly_model/scene.gltf"
+        data-product="RC HIGHWAYMAN" data-price="4800000"
+        data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234DBFB8' width='100' height='100'/%3E%3Ccircle cx='50' cy='60' r='25' fill='%23C41E3A'/%3E%3Crect x='30' y='45' width='40' height='20' fill='%23FFD700'/%3E%3C/svg%3E"
+        data-description="Experience ultimate desktop RC racing with our premium mini RC car. Perfect for office desk, bedroom, or any workspace. Packed with pro-grade performance."
+        data-specs='{"battery": "2x AA", "size": "15cm", "speed": "20km/h", "feature": "4WD Enhanced"}'>
+        <div class="product-badge">BEST SELLER</div>
+        <div class="product-model-viewer">
+          <model-viewer data-model-src="assets/car-model/rc_highwayman_-_low_poly_model/scene.gltf" alt="RC Highwayman"
+            auto-rotate camera-controls shadow-intensity="1" style="width: 100%; height: 100%"></model-viewer>
+          <div class="model-overlay preview-trigger">VIEW DETAILS</div>
         </div>
-        <div class="hero-model">
-          <model-viewer
-            src="assets/car-model/rc_highwayman_-_low_poly_model/scene.gltf"
-            alt="RC Highwayman"
-            auto-rotate
-            camera-controls
-            shadow-intensity="1"
-          >
-          </model-viewer>
-        </div>
-      </div>
-    </section>
-
-    <!-- Feature Boxes -->
-    <section class="features" id="features">
-      <div class="feature-box">
-        <div class="feature-icon">🏎️</div>
-        <h3>DESKTOP PERFORMANCE</h3>
-        <p>Engineered for smooth acceleration and tight cornering. Turn your boring work desk into a thrilling miniature race track.</p>
-      </div>
-      <div class="feature-box">
-        <div class="feature-icon">✨</div>
-        <h3>MICRO SCALE DESIGN</h3>
-        <p>Compact scale with premium low-poly aesthetics. Looks just as stunning displayed next to your monitor as it does racing.</p>
-      </div>
-      <div class="feature-box">
-        <div class="feature-icon">🎮</div>
-        <h3>PINPOINT CONTROL</h3>
-        <p>Zero-latency 2.4GHz transmitter ensures ultra-responsive handling. Easily drift around your keyboard and coffee mug.</p>
-        <h3>HIGH PERFORMANCE</h3>
-        <p>Built for speed and precision</p>
-      </div>
-      <div class="feature-box">
-        <div class="feature-icon">✨</div>
-        <h3>LOW POLY DESIGN</h3>
-        <p>Modern aesthetic meets functionality</p>
-      </div>
-      <div class="feature-box">
-        <div class="feature-icon">🎮</div>
-        <h3>FULL CONTROL</h3>
-        <p>Interactive 3D model viewer</p>
-      </div>
-    </section>
-
-    <!-- Product Showcase -->
-    <section class="products" id="models">
-      <h2>OUR RC MODELS</h2>
-      <div class="products-grid">
-        <!-- RC Highwayman -->
-        <div
-          class="product-card"
-          data-model="assets/car-model/rc_highwayman_-_low_poly_model/scene.gltf"
-          data-product="RC HIGHWAYMAN"
-          data-price="4800000"
-          data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234DBFB8' width='100' height='100'/%3E%3Ccircle cx='50' cy='60' r='25' fill='%23C41E3A'/%3E%3Crect x='30' y='45' width='40' height='20' fill='%23FFD700'/%3E%3C/svg%3E"
-          data-description="Experience ultimate desktop RC racing with our premium mini RC car. Perfect for office desk, bedroom, or any workspace. Packed with pro-grade performance."
-          data-specs='{"battery": "2x AA", "size": "15cm", "speed": "20km/h", "feature": "4WD Enhanced"}'
-        >
-          <div class="product-badge">BEST SELLER</div>
-          <div class="product-model-viewer">
-            <model-viewer
-              data-model-src="assets/car-model/rc_highwayman_-_low_poly_model/scene.gltf"
-              alt="RC Highwayman"
-              auto-rotate
-              camera-controls
-              shadow-intensity="1"
-              style="width: 100%; height: 100%"
-            ></model-viewer>
-            <div class="model-overlay preview-trigger">VIEW DETAILS</div>
-          </div>
-          <div class="product-info">
-            <h3>RC HIGHWAYMAN</h3>
-            <p>Premium model with advanced features</p>
-            <div class="product-price">Rp 4.800.000</div>
-            <div class="product-actions">
-              <button
-                class="btn-add-cart"
-                data-product="RC HIGHWAYMAN"
-                data-price="4800000"
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- RC Annihilator -->
-        <div
-          class="product-card"
-          data-model="assets/car-model/rc_annihilator_-_low_poly_model/scene.gltf"
-          data-product="RC ANNIHILATOR"
-          data-price="5600000"
-          data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234DBFB8' width='100' height='100'/%3E%3Crect x='20' y='50' width='60' height='25' fill='%23FF6B35'/%3E%3Ccircle cx='35' cy='62' r='10' fill='%23333'/%3E%3Ccircle cx='65' cy='62' r='10' fill='%23333'/%3E%3C/svg%3E"
-          data-description="Dominate the desktop with this extreme racing beast. Ultra-premium mini RC engineered for aggressive performance. Your desk just became a racetrack."
-          data-specs='{"battery": "2x AA + Booster", "size": "17cm", "speed": "25km/h", "feature": "Turbo Mode"}'
-        >
-          <div class="product-badge hot">HOT ITEM</div>
-          <div class="product-model-viewer">
-            <model-viewer
-              data-model-src="assets/car-model/rc_annihilator_-_low_poly_model/scene.gltf"
-              alt="RC Annihilator"
-              auto-rotate
-              camera-controls
-              shadow-intensity="1"
-              style="width: 100%; height: 100%"
-            ></model-viewer>
-            <div class="model-overlay preview-trigger">VIEW DETAILS</div>
-          </div>
-          <div class="product-info">
-            <h3>RC ANNIHILATOR</h3>
-            <p>Powerful design for extreme racing</p>
-            <div class="product-price">Rp 5.600.000</div>
-            <div class="product-actions">
-              <button
-                class="btn-add-cart"
-                data-product="RC ANNIHILATOR"
-                data-price="5600000"
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- RC Shvan -->
-        <div
-          class="product-card"
-          data-model="assets/car-model/rc_shvan_-_low_poly_model/scene.gltf"
-          data-product="RC SHVAN"
-          data-price="4480000"
-          data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234DBFB8' width='100' height='100'/%3E%3Cpolygon points='30,70 70,70 75,40 25,40' fill='%23333'/%3E%3Ccircle cx='40' cy='75' r='8' fill='%23666'/%3E%3Ccircle cx='60' cy='75' r='8' fill='%23666'/%3E%3C/svg%3E"
-          data-description="Stylish and sleek classic design meets premium mini RC performance. Perfect companion for your desk. Unique chassis engineered for smooth precision control."
-          data-specs='{"battery": "2x AA", "size": "16cm", "speed": "18km/h", "feature": "Precision Control"}'
-        >
-          <div class="product-model-viewer">
-            <model-viewer
-              data-model-src="assets/car-model/rc_shvan_-_low_poly_model/scene.gltf"
-              alt="RC Shvan"
-              auto-rotate
-              camera-controls
-              shadow-intensity="1"
-              style="width: 100%; height: 100%"
-            ></model-viewer>
-            <div class="model-overlay preview-trigger">VIEW DETAILS</div>
-          </div>
-          <div class="product-info">
-            <h3>RC SHVAN</h3>
-            <p>Unique model with stunning appeal</p>
-            <div class="product-price">Rp 4.480.000</div>
-            <div class="product-actions">
-              <button
-                class="btn-add-cart"
-                data-product="RC SHVAN"
-                data-price="4480000"
-              >
-                ADD TO CART
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Fortnite Time Machine (Coming Soon) -->
-        <div
-          class="product-card product-card-bttf"
-          data-model="assets/car-model/fortnite_back_to_the_future_time_machine/scene.gltf"
-          data-product="BTTF TIME MACHINE"
-          data-price="Coming Soon"
-          data-description="Limited Edition: Launch yourself through time with this iconic Fortnite x Back to the Future crossover. Premium desktop RC with futuristic performance."
-          data-specs='{"battery": "TBD", "size": "18cm", "speed": "TBD", "feature": "Time Travel Mode"}'
-        >
-          <div class="product-model-viewer bttf-viewer">
-            <div class="bttf-background">
-              <div class="bttf-glow"></div>
-              <div class="bttf-text">BACK TO THE FUTURE</div>
-            </div>
-            <model-viewer
-              data-model-src="assets/car-model/fortnite_back_to_the_future_time_machine/scene.gltf"
-              alt="BTTF Time Machine"
-              auto-rotate
-              camera-controls
-              shadow-intensity="1"
-              style="width: 100%; height: 100%; position: relative; z-index: 2"
-            ></model-viewer>
-            <div class="model-overlay preview-trigger">VIEW DETAILS</div>
-          </div>
-          <div class="product-info">
-            <h3>RC TIME MACHINE</h3>
-            <p>Back to the Future edition</p>
-            <div class="product-price coming-soon-price">COMING SOON</div>
-            <div class="product-actions">
-              <button class="btn-secondary" style="flex: 1">NOTIFY ME</button>
-            </div>
+        <div class="product-info">
+          <h3>RC HIGHWAYMAN</h3>
+          <p>Premium model with advanced features</p>
+          <div class="product-price">Rp 4.800.000</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" data-product="RC HIGHWAYMAN" data-price="4800000">
+              ADD TO CART
+            </button>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-      <h2>ABOUT VINTIX</h2>
-      <div class="gallery-content">
-        <div class="gallery-text">
-          <p>
-            Welcome to VintiX Mini RC, where quality meets innovation. Our RC
-            cars are crafted with precision and passion, combining stunning
-            low-poly design with cutting-edge performance.
-          </p>
-          <p>
-            Each model is carefully developed to provide the ultimate remote
-            control experience, whether you're a seasoned collector or just
-            starting your RC journey.
-          </p>
-          <a href="#" class="read-more">READ MORE →</a>
+      <!-- RC Annihilator -->
+      <div class="product-card" data-model="assets/car-model/rc_annihilator_-_low_poly_model/scene.gltf"
+        data-product="RC ANNIHILATOR" data-price="5600000"
+        data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234DBFB8' width='100' height='100'/%3E%3Crect x='20' y='50' width='60' height='25' fill='%23FF6B35'/%3E%3Ccircle cx='35' cy='62' r='10' fill='%23333'/%3E%3Ccircle cx='65' cy='62' r='10' fill='%23333'/%3E%3C/svg%3E"
+        data-description="Dominate the desktop with this extreme racing beast. Ultra-premium mini RC engineered for aggressive performance. Your desk just became a racetrack."
+        data-specs='{"battery": "2x AA + Booster", "size": "17cm", "speed": "25km/h", "feature": "Turbo Mode"}'>
+        <div class="product-badge hot">HOT ITEM</div>
+        <div class="product-model-viewer">
+          <model-viewer data-model-src="assets/car-model/rc_annihilator_-_low_poly_model/scene.gltf"
+            alt="RC Annihilator" auto-rotate camera-controls shadow-intensity="1"
+            style="width: 100%; height: 100%"></model-viewer>
+          <div class="model-overlay preview-trigger">VIEW DETAILS</div>
         </div>
-        <div class="gallery-viewer">
-          <model-viewer
-            data-model-src="assets/car-model/rc_annihilator_-_low_poly_model/scene.gltf"
-            alt="RC Annihilator"
-            auto-rotate
-            camera-controls
-            shadow-intensity="1"
-          >
-          </model-viewer>
-        </div>
-      </div>
-    </section>
-
-    <!-- Reviews and Comments -->
-     <section class="reviews" id="reviews">
-  <h2>CUSTOMER REVIEWS</h2>
-  
-  <div class="reviews-marquee">
-    <div class="marquee-wrapper">
-      
-      <div class="review-track" id="track1">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">AX</div>
-              <div class="reviewer-details">
-                <h4>Alex Mercer</h4>
-                <div class="review-stars">★★★★★</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 15, 2025</span>
+        <div class="product-info">
+          <h3>RC ANNIHILATOR</h3>
+          <p>Powerful design for extreme racing</p>
+          <div class="product-price">Rp 5.600.000</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" data-product="RC ANNIHILATOR" data-price="5600000">
+              ADD TO CART
+            </button>
           </div>
-          <p class="review-text">Absolutely love the RC Highwayman! The low-poly design looks amazing on my desk.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">SR</div>
-              <div class="reviewer-details">
-                <h4>Sarah Connor</h4>
-                <div class="review-stars">★★★★☆</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 12, 2025</span>
-          </div>
-          <p class="review-text">Great quality and fast shipping. The RC Annihilator is incredibly fast.</p>
         </div>
       </div>
 
-      <div class="review-track" id="track2" aria-hidden="true">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">AX</div>
-              <div class="reviewer-details">
-                <h4>Alex Mercer</h4>
-                <div class="review-stars">★★★★★</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 15, 2025</span>
-          </div>
-          <p class="review-text">Absolutely love the RC Highwayman! The low-poly design looks amazing on my desk.</p>
+      <!-- RC Shvan -->
+      <div class="product-card" data-model="assets/car-model/rc_shvan_-_low_poly_model/scene.gltf"
+        data-product="RC SHVAN" data-price="4480000"
+        data-image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect fill='%234DBFB8' width='100' height='100'/%3E%3Cpolygon points='30,70 70,70 75,40 25,40' fill='%23333'/%3E%3Ccircle cx='40' cy='75' r='8' fill='%23666'/%3E%3Ccircle cx='60' cy='75' r='8' fill='%23666'/%3E%3C/svg%3E"
+        data-description="Stylish and sleek classic design meets premium mini RC performance. Perfect companion for your desk. Unique chassis engineered for smooth precision control."
+        data-specs='{"battery": "2x AA", "size": "16cm", "speed": "18km/h", "feature": "Precision Control"}'>
+        <div class="product-model-viewer">
+          <model-viewer data-model-src="assets/car-model/rc_shvan_-_low_poly_model/scene.gltf" alt="RC Shvan"
+            auto-rotate camera-controls shadow-intensity="1" style="width: 100%; height: 100%"></model-viewer>
+          <div class="model-overlay preview-trigger">VIEW DETAILS</div>
         </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">SR</div>
-              <div class="reviewer-details">
-                <h4>Sarah Connor</h4>
-                <div class="review-stars">★★★★☆</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 12, 2025</span>
+        <div class="product-info">
+          <h3>RC SHVAN</h3>
+          <p>Unique model with stunning appeal</p>
+          <div class="product-price">Rp 4.480.000</div>
+          <div class="product-actions">
+            <button class="btn-add-cart" data-product="RC SHVAN" data-price="4480000">
+              ADD TO CART
+            </button>
           </div>
-          <p class="review-text">Great quality and fast shipping. The RC Annihilator is incredibly fast.</p>
+        </div>
+      </div>
+
+      <!-- Fortnite Time Machine (Coming Soon) -->
+      <div class="product-card product-card-bttf"
+        data-model="assets/car-model/fortnite_back_to_the_future_time_machine/scene.gltf"
+        data-product="BTTF TIME MACHINE" data-price="Coming Soon"
+        data-description="Limited Edition: Launch yourself through time with this iconic Fortnite x Back to the Future crossover. Premium desktop RC with futuristic performance."
+        data-specs='{"battery": "TBD", "size": "18cm", "speed": "TBD", "feature": "Time Travel Mode"}'>
+        <div class="product-model-viewer bttf-viewer">
+          <div class="bttf-background">
+            <div class="bttf-glow"></div>
+            <div class="bttf-text">BACK TO THE FUTURE</div>
+          </div>
+          <model-viewer data-model-src="assets/car-model/fortnite_back_to_the_future_time_machine/scene.gltf"
+            alt="BTTF Time Machine" auto-rotate camera-controls shadow-intensity="1"
+            style="width: 100%; height: 100%; position: relative; z-index: 2"></model-viewer>
+          <div class="model-overlay preview-trigger">VIEW DETAILS</div>
+        </div>
+        <div class="product-info">
+          <h3>RC TIME MACHINE</h3>
+          <p>Back to the Future edition</p>
+          <div class="product-price coming-soon-price">COMING SOON</div>
+          <div class="product-actions">
+            <button class="btn-secondary" style="flex: 1">NOTIFY ME</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <div class="review-form-container centered-form">
-    <h3 class="leave">LEAVE A REVIEW</h3>
-    <form id="reviewForm" class="review-form">
-      <div class="form-row-flex">
-        <input type="text" id="revName" placeholder="Your Name" required />
-        <select id="revRating" required class="review-select">
-          <option value="" disabled selected>Rating</option>
-          <option value="5">★★★★★</option>
-          <option value="4">★★★★☆</option>
-          <option value="3">★★★☆☆</option>
-        </select>
+  <!-- Gallery Section -->
+  <section class="gallery" id="gallery">
+    <h2>ABOUT VINTIX</h2>
+    <div class="gallery-content">
+      <div class="gallery-text">
+        <p>
+          Welcome to VintiX Mini RC, where quality meets innovation. Our RC
+          cars are crafted with precision and passion, combining stunning
+          low-poly design with cutting-edge performance.
+        </p>
+        <p>
+          Each model is carefully developed to provide the ultimate remote
+          control experience, whether you're a seasoned collector or just
+          starting your RC journey.
+        </p>
+        <a href="#" class="read-more">READ MORE →</a>
       </div>
-      <textarea id="revComment" placeholder="Share your experience..." rows="3" required></textarea>
-      <button type="submit" class="btn-primary">POST REVIEW</button>
-    </form>
-  </div>
-</section>
+      <div class="gallery-viewer">
+        <model-viewer data-model-src="assets/car-model/rc_annihilator_-_low_poly_model/scene.gltf" alt="RC Annihilator"
+          auto-rotate camera-controls shadow-intensity="1">
+        </model-viewer>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h4>VINTIX RC</h4>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Twitter</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>INFORMATION</h4>
-          <ul>
-            <li><a href="#">Gallery</a></li>
-            <li><a href="#">Models</a></li>
-            <li><a href="#">News</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h4>SUPPORT</h4>
-          <ul>
-            <li><a href="#">Help & Support</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li><a href="#">Terms & Conditions</a></li>
-          </ul>
-        </div>
-        <div class="footer-logo">
-          <p>VintiX RC</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2026 VintiX Mini RC. All rights reserved.</p>
-      </div>
-    </footer>
+  <!-- Reviews and Comments -->
+  <section class="reviews" id="reviews">
+    <h2>CUSTOMER REVIEWS</h2>
 
-    <!-- Cart Modal -->
-    <div class="modal" id="cartModal">
-      <div class="modal-content modal-lg">
-        <div class="modal-header">
-          <h2>SHOPPING CART</h2>
-          <button class="close-modal" data-modal="cartModal">&times;</button>
-        </div>
-        <div class="modal-body">
-          <div id="cartItems" class="cart-items-list">
-            <p class="empty-cart">Your cart is empty. Start shopping!</p>
+    <div class="reviews-marquee">
+      <div class="marquee-wrapper">
+
+        <div class="review-track" id="track1">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">AX</div>
+                <div class="reviewer-details">
+                  <h4>Alex Mercer</h4>
+                  <div class="review-stars">★★★★★</div>
+                </div>
+              </div>
+              <span class="review-date">Oct 15, 2025</span>
+            </div>
+            <p class="review-text">Absolutely love the RC Highwayman! The low-poly design looks amazing on my desk.</p>
+          </div>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">SR</div>
+                <div class="reviewer-details">
+                  <h4>Sarah Connor</h4>
+                  <div class="review-stars">★★★★☆</div>
+                </div>
+              </div>
+              <span class="review-date">Oct 12, 2025</span>
+            </div>
+            <p class="review-text">Great quality and fast shipping. The RC Annihilator is incredibly fast.</p>
           </div>
         </div>
-        <div class="modal-footer">
-          <div class="cart-summary">
-            <div class="summary-row">
-              <span>Subtotal:</span>
-              <span id="subtotal">$0.00</span>
+
+        <div class="review-track" id="track2" aria-hidden="true">
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">AX</div>
+                <div class="reviewer-details">
+                  <h4>Alex Mercer</h4>
+                  <div class="review-stars">★★★★★</div>
+                </div>
+              </div>
+              <span class="review-date">Oct 15, 2025</span>
             </div>
-            <div class="summary-row">
-              <span>Tax (10%):</span>
-              <span id="tax">$0.00</span>
-            </div>
-            <div class="summary-row total">
-              <span>Total:</span>
-              <span id="total">$0.00</span>
-            </div>
+            <p class="review-text">Absolutely love the RC Highwayman! The low-poly design looks amazing on my desk.</p>
           </div>
-          <button class="btn-primary" id="checkoutBtn">
-            PROCEED TO CHECKOUT
-          </button>
+          <div class="review-card">
+            <div class="review-header">
+              <div class="reviewer-info">
+                <div class="reviewer-avatar">SR</div>
+                <div class="reviewer-details">
+                  <h4>Sarah Connor</h4>
+                  <div class="review-stars">★★★★☆</div>
+                </div>
+              </div>
+              <span class="review-date">Oct 12, 2025</span>
+            </div>
+            <p class="review-text">Great quality and fast shipping. The RC Annihilator is incredibly fast.</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Checkout Modal -->
-    <div class="modal" id="checkoutModal">
-      <div class="modal-content modal-lg">
-        <div class="modal-header">
-          <h2>CHECKOUT</h2>
-          <button class="close-modal" data-modal="checkoutModal">
-            &times;
-          </button>
+    <div class="review-form-container centered-form">
+      <h3 class="leave">LEAVE A REVIEW</h3>
+      <form id="reviewForm" class="review-form">
+        <div class="form-row-flex">
+          <input type="text" id="revName" placeholder="Your Name" required />
+          <select id="revRating" required class="review-select">
+            <option value="" disabled selected>Rating</option>
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+          </select>
         </div>
-        <div class="modal-body">
-          <form id="checkoutForm" class="checkout-form">
-            <div class="form-section">
-              <h3>Shipping Information</h3>
-              <div class="form-row">
-                <input type="text" placeholder="Full Name" required />
-                <input type="email" placeholder="Email" required />
-              </div>
-              <div class="form-row">
-                <input type="text" placeholder="Address" required />
-              </div>
-              <div class="form-row">
-                <input type="text" placeholder="City" required />
-                <input type="text" placeholder="Postal Code" required />
-              </div>
-            </div>
+        <textarea id="revComment" placeholder="Share your experience..." rows="3" required></textarea>
+        <button type="submit" class="btn-primary">POST REVIEW</button>
+      </form>
+    </div>
+  </section>
 
-            <div class="form-section">
-              <h3>Payment Method</h3>
-              <div class="radio-group">
-                <label>
-                  <input type="radio" name="payment" value="card" checked />
-                  Credit Card
-                </label>
-                <label>
-                  <input type="radio" name="payment" value="bank" />
-                  Bank Transfer
-                </label>
-                <label>
-                  <input type="radio" name="payment" value="ewallet" />
-                  E-Wallet
-                </label>
-              </div>
-            </div>
-
-            <div class="form-section">
-              <h3>Card Details</h3>
-              <div class="form-row">
-                <input type="text" placeholder="Card Number" required />
-              </div>
-              <div class="form-row">
-                <input type="text" placeholder="Cardholder Name" required />
-                <input type="text" placeholder="MM/YY" required />
-                <input type="text" placeholder="CVV" required />
-              </div>
-            </div>
-
-            <div class="form-section">
-              <div class="checkbox">
-                <input type="checkbox" id="terms" required />
-                <label for="terms">I agree to the Terms & Conditions</label>
-              </div>
-            </div>
-          </form>
-
-          <div class="checkout-summary">
-            <h3>Order Summary</h3>
-            <div id="checkoutItems"></div>
-            <div class="summary-row total">
-              <span>Total:</span>
-              <span id="checkoutTotal">$0.00</span>
-            </div>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button class="btn-secondary" data-modal="checkoutModal">BACK</button>
-          <button class="btn-primary" id="payBtn" style="flex: 1">
-            COMPLETE PAYMENT
-          </button>
-        </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>VINTIX RC</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Twitter</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>INFORMATION</h4>
+        <ul>
+          <li><a href="#">Gallery</a></li>
+          <li><a href="#">Models</a></li>
+          <li><a href="#">News</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>SUPPORT</h4>
+        <ul>
+          <li><a href="#">Help & Support</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-logo">
+        <p>VintiX RC</p>
       </div>
     </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 VintiX Mini RC. All rights reserved.</p>
+    </div>
+  </footer>
 
-    <!-- Success Payment Modal -->
-    <div class="modal" id="successModal">
-      <div class="modal-content modal-success">
-        <div class="success-animation">
-          <div class="success-checkmark">
-            <div class="check-icon">✓</div>
+  <!-- Cart Modal -->
+  <div class="modal" id="cartModal">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h2>SHOPPING CART</h2>
+        <button class="close-modal" data-modal="cartModal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="cartItems" class="cart-items-list">
+          <p class="empty-cart">Your cart is empty. Start shopping!</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="cart-summary">
+          <div class="summary-row">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (10%):</span>
+            <span id="tax">$0.00</span>
+          </div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="total">$0.00</span>
           </div>
         </div>
-        <h2>PAYMENT SUCCESSFUL!</h2>
-        <p>Thank you for your purchase</p>
-        <div class="success-details">
-          <p><strong>Order ID:</strong> <span id="orderId"></span></p>
-          <p><strong>Total Paid:</strong> <span id="paidAmount"></span></p>
-          <p>Your RC cars will be shipped soon!</p>
-        </div>
-        <button class="btn-primary" id="continueShoppingBtn">
-          CONTINUE SHOPPING
+        <button class="btn-primary" id="checkoutBtn">
+          PROCEED TO CHECKOUT
         </button>
       </div>
     </div>
+  </div>
 
-    <!-- 3D Model Preview Modal -->
-    <div class="modal" id="modelPreviewModal">
-      <div class="modal-content modal-3d-preview">
-        <div class="modal-header">
-          <h2 id="previewModelTitle">3D MODEL PREVIEW</h2>
-          <button class="close-modal" data-modal="modelPreviewModal">
-            &times;
-          </button>
-        </div>
-        <div class="modal-body modal-3d-body">
-          <div class="preview-grid">
-            <div id="modelPreviewContainer" class="model-preview-container">
-              <div class="preview-view-badge">360° DRAG TO ROTATE</div>
-              <model-viewer
-                id="previewModelViewer"
-                auto-rotate
-                camera-controls
-                shadow-intensity="1"
-                style="width: 100%; height: 100%"
-              ></model-viewer>
+  <!-- Checkout Modal -->
+  <div class="modal" id="checkoutModal">
+    <div class="modal-content modal-lg">
+      <div class="modal-header">
+        <h2>CHECKOUT</h2>
+        <button class="close-modal" data-modal="checkoutModal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="checkoutForm" class="checkout-form">
+          <div class="form-section">
+            <h3>Shipping Information</h3>
+            <div class="form-row">
+              <input type="text" placeholder="Full Name" required />
+              <input type="email" placeholder="Email" required />
             </div>
-            <div class="preview-details">
-              <div class="preview-header">
-                <p class="preview-eyebrow">Performance Details</p>
-                <h3 id="previewProductName">Product Name</h3>
-                <div class="preview-pills">
-                  <span class="preview-pill">Premium Build</span>
-                  <span class="preview-pill">Interactive 3D</span>
-                </div>
-              </div>
+            <div class="form-row">
+              <input type="text" placeholder="Address" required />
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="City" required />
+              <input type="text" placeholder="Postal Code" required />
+            </div>
+          </div>
 
-              <div class="preview-description-wrap">
-                <p class="preview-description" id="previewProductDescription">
-                  Product description goes here
-                </p>
-              </div>
+          <div class="form-section">
+            <h3>Payment Method</h3>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="payment" value="card" checked />
+                Credit Card
+              </label>
+              <label>
+                <input type="radio" name="payment" value="bank" />
+                Bank Transfer
+              </label>
+              <label>
+                <input type="radio" name="payment" value="ewallet" />
+                E-Wallet
+              </label>
+            </div>
+          </div>
 
-              <div class="preview-specs">
-                <div class="spec-item">
-                  <div class="spec-head">
-                    <span class="spec-icon">🔋</span>
-                    <span class="spec-label">Battery</span>
-                  </div>
-                  <span class="spec-value" id="specBattery">2x AA</span>
-                </div>
-                <div class="spec-item">
-                  <div class="spec-head">
-                    <span class="spec-icon">📏</span>
-                    <span class="spec-label">Size</span>
-                  </div>
-                  <span class="spec-value" id="specSize">16cm</span>
-                </div>
-                <div class="spec-item">
-                  <div class="spec-head">
-                    <span class="spec-icon">⚡</span>
-                    <span class="spec-label">Speed</span>
-                  </div>
-                  <span class="spec-value" id="specSpeed">20km/h</span>
-                </div>
-                <div class="spec-item">
-                  <div class="spec-head">
-                    <span class="spec-icon">🏁</span>
-                    <span class="spec-label">Feature</span>
-                  </div>
-                  <span class="spec-value" id="specFeature">Premium Grade</span>
-                </div>
-              </div>
+          <div class="form-section">
+            <h3>Card Details</h3>
+            <div class="form-row">
+              <input type="text" placeholder="Card Number" required />
+            </div>
+            <div class="form-row">
+              <input type="text" placeholder="Cardholder Name" required />
+              <input type="text" placeholder="MM/YY" required />
+              <input type="text" placeholder="CVV" required />
+            </div>
+          </div>
 
-              <div class="preview-marketing">
-                <p>
-                  Experience the ultimate RC experience with our premium
-                  features
-                </p>
-              </div>
+          <div class="form-section">
+            <div class="checkbox">
+              <input type="checkbox" id="terms" required />
+              <label for="terms">I agree to the Terms & Conditions</label>
+            </div>
+          </div>
+        </form>
 
-              <div class="preview-price-section">
-                <span class="preview-price-label">Starting Price</span>
-                <div class="preview-price" id="previewProductPrice">
-                  Rp 4.800.000
+        <div class="checkout-summary">
+          <h3>Order Summary</h3>
+          <div id="checkoutItems"></div>
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span id="checkoutTotal">$0.00</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" data-modal="checkoutModal">BACK</button>
+        <button class="btn-primary" id="payBtn" style="flex: 1">
+          COMPLETE PAYMENT
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Payment Modal -->
+  <div class="modal" id="successModal">
+    <div class="modal-content modal-success">
+      <div class="success-animation">
+        <div class="success-checkmark">
+          <div class="check-icon">✓</div>
+        </div>
+      </div>
+      <h2>PAYMENT SUCCESSFUL!</h2>
+      <p>Thank you for your purchase</p>
+      <div class="success-details">
+        <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+        <p><strong>Total Paid:</strong> <span id="paidAmount"></span></p>
+        <p>Your RC cars will be shipped soon!</p>
+      </div>
+      <button class="btn-primary" id="continueShoppingBtn">
+        CONTINUE SHOPPING
+      </button>
+    </div>
+  </div>
+
+  <!-- 3D Model Preview Modal -->
+  <div class="modal" id="modelPreviewModal">
+    <div class="modal-content modal-3d-preview">
+      <div class="modal-header">
+        <h2 id="previewModelTitle">3D MODEL PREVIEW</h2>
+        <button class="close-modal" data-modal="modelPreviewModal">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body modal-3d-body">
+        <div class="preview-grid">
+          <div id="modelPreviewContainer" class="model-preview-container">
+            <div class="preview-view-badge">360° DRAG TO ROTATE</div>
+            <model-viewer id="previewModelViewer" auto-rotate camera-controls shadow-intensity="1"
+              style="width: 100%; height: 100%"></model-viewer>
+          </div>
+          <div class="preview-details">
+            <div class="preview-header">
+              <p class="preview-eyebrow">Performance Details</p>
+              <h3 id="previewProductName">Product Name</h3>
+              <div class="preview-pills">
+                <span class="preview-pill">Premium Build</span>
+                <span class="preview-pill">Interactive 3D</span>
+              </div>
+            </div>
+
+            <div class="preview-description-wrap">
+              <p class="preview-description" id="previewProductDescription">
+                Product description goes here
+              </p>
+            </div>
+
+            <div class="preview-specs">
+              <div class="spec-item">
+                <div class="spec-head">
+                  <span class="spec-icon">🔋</span>
+                  <span class="spec-label">Battery</span>
                 </div>
+                <span class="spec-value" id="specBattery">2x AA</span>
               </div>
+              <div class="spec-item">
+                <div class="spec-head">
+                  <span class="spec-icon">📏</span>
+                  <span class="spec-label">Size</span>
+                </div>
+                <span class="spec-value" id="specSize">16cm</span>
+              </div>
+              <div class="spec-item">
+                <div class="spec-head">
+                  <span class="spec-icon">⚡</span>
+                  <span class="spec-label">Speed</span>
+                </div>
+                <span class="spec-value" id="specSpeed">20km/h</span>
+              </div>
+              <div class="spec-item">
+                <div class="spec-head">
+                  <span class="spec-icon">🏁</span>
+                  <span class="spec-label">Feature</span>
+                </div>
+                <span class="spec-value" id="specFeature">Premium Grade</span>
+              </div>
+            </div>
 
-              <div class="preview-actions">
-                <button
-                  class="btn-primary"
-                  id="previewAddToCart"
-                  style="flex: 1"
-                >
-                  ADD TO CART
-                </button>
-                <button
-                  class="btn-secondary preview-close-btn"
-                  data-modal="modelPreviewModal"
-                  style="flex: 1"
-                >
-                  CLOSE
-                </button>
+            <div class="preview-marketing">
+              <p>
+                Experience the ultimate RC experience with our premium
+                features
+              </p>
+            </div>
+
+            <div class="preview-price-section">
+              <span class="preview-price-label">Starting Price</span>
+              <div class="preview-price" id="previewProductPrice">
+                Rp 4.800.000
               </div>
+            </div>
+
+            <div class="preview-actions">
+              <button class="btn-primary" id="previewAddToCart" style="flex: 1">
+                ADD TO CART
+              </button>
+              <button class="btn-secondary preview-close-btn" data-modal="modelPreviewModal" style="flex: 1">
+                CLOSE
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="modal" id="authModal">
-      <div class="modal-content" style="max-width: 420px;">
-        <div class="modal-header">
-          <h2>MY ACCOUNT</h2>
-          <button class="close-modal" data-modal="authModal">&times;</button>
+  </div>
+  <div class="modal" id="authModal">
+    <div class="modal-content" style="max-width: 420px;">
+      <div class="modal-header">
+        <h2>MY ACCOUNT</h2>
+        <button class="close-modal" data-modal="authModal">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" data-target="loginForm">LOGIN</button>
+          <button class="auth-tab" data-target="registerForm">REGISTER</button>
         </div>
-        <div class="modal-body">
-          
-          <div class="auth-tabs">
-            <button class="auth-tab active" data-target="loginForm">LOGIN</button>
-            <button class="auth-tab" data-target="registerForm">REGISTER</button>
+
+        <form id="loginForm" class="auth-form active">
+          <div class="form-section" style="margin-bottom: 1.5rem;">
+            <div class="form-row" style="flex-direction: column; gap: 1.2rem;">
+              <input type="email" placeholder="Email Address" required />
+              <input type="password" placeholder="Password" required />
+            </div>
           </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">LOGIN SECURELY</button>
+          <p class="auth-footer-text">
+            Forgot your password? <a href="#">Reset here</a>
+          </p>
+        </form>
 
-          <form id="loginForm" class="auth-form active">
-            <div class="form-section" style="margin-bottom: 1.5rem;">
-              <div class="form-row" style="flex-direction: column; gap: 1.2rem;">
-                <input type="email" placeholder="Email Address" required />
-                <input type="password" placeholder="Password" required />
-              </div>
+        <form id="registerForm" class="auth-form hidden">
+          <div class="form-section" style="margin-bottom: 1.5rem;">
+            <div class="form-row" style="flex-direction: column; gap: 1.2rem;">
+              <input type="text" placeholder="Full Name" required />
+              <input type="email" placeholder="Email Address" required />
+              <input type="password" placeholder="Create Password" required />
             </div>
-            <button type="submit" class="btn-primary" style="width: 100%;">LOGIN SECURELY</button>
-            <p class="auth-footer-text">
-              Forgot your password? <a href="#">Reset here</a>
-            </p>
-          </form>
+          </div>
+          <button type="submit" class="btn-secondary"
+            style="width: 100%; box-shadow: 0 12px 28px rgba(30, 196, 181, 0.3);">CREATE ACCOUNT</button>
+          <p class="auth-footer-text">
+            By registering, you agree to our <a href="#">Terms</a>
+          </p>
+        </form>
 
-          <form id="registerForm" class="auth-form hidden">
-            <div class="form-section" style="margin-bottom: 1.5rem;">
-              <div class="form-row" style="flex-direction: column; gap: 1.2rem;">
-                <input type="text" placeholder="Full Name" required />
-                <input type="email" placeholder="Email Address" required />
-                <input type="password" placeholder="Create Password" required />
-              </div>
-            </div>
-            <button type="submit" class="btn-secondary" style="width: 100%; box-shadow: 0 12px 28px rgba(30, 196, 181, 0.3);">CREATE ACCOUNT</button>
-            <p class="auth-footer-text">
-              By registering, you agree to our <a href="#">Terms</a>
-            </p>
-          </form>
-
-        </div>
       </div>
     </div>
+  </div>
 
-    <!-- Main JavaScript Module -->
-    <script src="script.js"></script>
-  </body>
+  <!-- Main JavaScript Module -->
+  <script src="script.js"></script>
+</body>
+
 </html>
