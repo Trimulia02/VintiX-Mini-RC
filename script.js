@@ -262,12 +262,38 @@ function setupCheckoutButton() {
   const checkoutBtn = document.getElementById("checkoutBtn");
   if (checkoutBtn) {
     checkoutBtn.addEventListener("click", (e) => {
+      e.preventDefault(); // Mencegah refresh
+
+      // 1. Cek apakah keranjang kosong
       if (cart.length === 0) {
-        e.preventDefault();
         alert("Your cart is empty!");
         return;
       }
 
+      // 2. Cek apakah user sudah login
+      const currentUserStr = localStorage.getItem("vintixCurrentUser");
+      if (!currentUserStr) {
+        // Jika belum login, beri notifikasi dan pindahkan ke halaman login
+        alert("Please login first to proceed to checkout!");
+        window.location.href = "login/login.html";
+        return;
+      }
+
+      // 3. Jika sudah login dan keranjang terisi
+      const user = JSON.parse(currentUserStr);
+
+      // (Bonus) Isi otomatis Nama dan Email di form Checkout menggunakan data user
+      const checkoutForm = document.getElementById("checkoutForm");
+      if (checkoutForm) {
+        const nameInput = checkoutForm.querySelector('input[name="fullName"]');
+        const emailInput = checkoutForm.querySelector('input[name="email"]');
+        
+        // Gabungkan nama depan dan nama belakang
+        if (nameInput) nameInput.value = `${user.firstName} ${user.lastName}`;
+        if (emailInput) emailInput.value = user.email;
+      }
+
+      // Tutup keranjang dan buka modal Checkout
       closeModal("cartModal");
       openModal("checkoutModal");
     });
@@ -1316,6 +1342,8 @@ function initializeApp() {
   initCheckout();
   initProductPreview();
   initAuth();
+  // ensure nav reflects login state
+  updateAuthNav();
   initReviews();
 
   // Setup error handling
@@ -1362,6 +1390,86 @@ document.addEventListener("DOMContentLoaded", initializeApp);
    Handle Login & Register tab switching
    ======================================== */
 
+// ----------------------
+// AUTHENTICATION HELPERS
+// ----------------------
+
+/**
+ * Load registered users from localStorage
+ * @returns {Array} Array of user objects {name,email,password}
+ */
+function loadUsers() {
+  try {
+    const data = localStorage.getItem("vintixUsers");
+    return data ? JSON.parse(data) : [];
+  } catch (e) {
+    console.error("Failed to parse users from storage", e);
+    return [];
+  }
+}
+
+/**
+ * Save users array to localStorage
+ * @param {Array} users
+ */
+function saveUsers(users) {
+  try {
+    localStorage.setItem("vintixUsers", JSON.stringify(users));
+  } catch (e) {
+    console.error("Failed to save users", e);
+  }
+}
+
+/**
+ * Attempt to register a new user. Returns user object on success or null if email already exists.
+ */
+function registerUser(name, email, password) {
+  const users = loadUsers();
+  if (users.find((u) => u.email === email)) {
+    return null; // already registered
+  }
+  const newUser = { name, email, password };
+  users.push(newUser);
+  saveUsers(users);
+  return newUser;
+}
+
+/**
+ * Try to login with credentials. Returns user object or null.
+ */
+function loginUser(email, password) {
+  const users = loadUsers();
+  const user = users.find((u) => u.email === email && u.password === password);
+  return user || null;
+}
+
+/**
+ * Persist currently logged in user
+ */
+function setCurrentUser(user) {
+  if (user) {
+    localStorage.setItem("vintixCurrentUser", JSON.stringify(user));
+  } else {
+    localStorage.removeItem("vintixCurrentUser");
+  }
+}
+
+/**
+ * Retrieve currently logged in user or null
+ */
+function getCurrentUser() {
+  try {
+    const data = localStorage.getItem("vintixCurrentUser");
+    return data ? JSON.parse(data) : null;
+  } catch (e) {
+    return null;
+  }
+}
+
+// ----------------------
+// AUTH MODAL CONTROLS
+// ----------------------
+
 function initAuth() {
   const authTabs = document.querySelectorAll(".auth-tab");
   const authForms = document.querySelectorAll(".auth-form");
@@ -1386,7 +1494,97 @@ function initAuth() {
       }
     });
   });
+
+  // form submissions
+  const loginForm = document.getElementById("loginForm");
+  const registerForm = document.getElementById("registerForm");
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = loginForm.loginEmail.value.trim();
+      const password = loginForm.loginPassword.value;
+      const user = loginUser(email, password);
+      if (user) {
+        setCurrentUser(user);
+        updateAuthNav();
+        closeModal("authModal");
+        alert("Logged in successfully!");
+      } else {
+        alert("Invalid credentials. Please try again or register.");
+      }
+    });
+  }
+
+  if (registerForm) {
+    registerForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = registerForm.registerFullName.value.trim();
+      const email = registerForm.registerEmail.value.trim();
+      const password = registerForm.registerPassword.value;
+      const user = registerUser(name, email, password);
+      if (user) {
+        setCurrentUser(user);
+        updateAuthNav();
+        closeModal("authModal");
+        alert("Registration successful and logged in!");
+      } else {
+        alert("Email already registered. Please login instead.");
+      }
+    });
+  }
 }
+
+/**
+ * Effectively switches the login link to profile or vice versa
+ */
+/**
+ * Mengubah tombol navigasi login menjadi Profil jika user sudah login
+ */
+function updateAuthNav() {
+  const navLink = document.getElementById("authNavLink");
+  if (!navLink) return;
+
+  try {
+    const currentUserStr = localStorage.getItem("vintixCurrentUser");
+    
+    if (currentUserStr) {
+      // JIKA SUDAH LOGIN: Ubah jadi Ikon Profil
+      const user = JSON.parse(currentUserStr);
+      const initial = user.firstName.charAt(0).toUpperCase();
+
+      // Membuat elemen HTML untuk ikon bulat premium
+      navLink.innerHTML = `
+        <span style="display:flex; align-items:center; gap:8px;">
+          <div style="width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #ff2d78, #00e5ff); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 12px; box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);">
+            ${initial}
+          </div>
+          ${user.firstName}
+        </span>
+      `;
+      navLink.href = "#";
+      
+      // Fungsi Logout jika profil diklik
+      navLink.onclick = (e) => {
+        e.preventDefault();
+        const ok = confirm(`Log out from ${user.firstName}'s account?`);
+        if (ok) {
+          localStorage.removeItem("vintixCurrentUser");
+          window.location.reload(); // Refresh halaman agar kembali jadi tombol Login
+        }
+      };
+      
+    } else {
+      // JIKA BELUM LOGIN: Tampilkan tombol default
+      navLink.textContent = "LOGIN";
+      navLink.href = "login/login.html";
+      navLink.onclick = null;
+    }
+  } catch (e) {
+    console.error("Auth error:", e);
+  }
+}
+
 
 /* ===== src/js/modules/reviews.js ===== */
 

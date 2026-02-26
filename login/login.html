@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+    <title>Vintix | Login & Register</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav class="nav">
+        <div class="nav-logo">
+          <img src="vintix-logo-nav.png" alt="VintiX" />
+        </div>
+
+        <div class="nav-button">
+          <button class="btn white-btn" id="loginBtn" onclick="login()">
+            Sign In
+          </button>
+          <button class="btn" id="registerBtn" onclick="register()">
+            Sign Up
+          </button>
+        </div>
+      </nav>
+
+      <!--------------Form box----------------->
+
+      <div class="form-box">
+        <div class="login-container" id="login">
+          <div class="top">
+            <span>Don't Have an Account? <a href="#" onclick="register()">Sign Up</a></span>
+            <header>Login</header>
+          </div>
+
+          <div class="input-box">
+            <input type="text" class="input-field" id="loginEmail" placeholder="Email" />
+            <i class="bx bx-user"></i>
+          </div>
+          <div class="input-box">
+            <input type="password" class="input-field" id="loginPassword" placeholder="Password" />
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <input type="button" class="submit" value="Sign In" onclick="submitLogin()" />
+          </div>
+          <div class="two-col">
+            <div class="one">
+              <input type="checkbox" id="login-check" />
+              <label for="login-check">Remember Me</label>
+            </div>
+            <div class="two">
+              <label><a href="#">Forgot Password?</a></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="register-container" id="register">
+          <div class="top">
+            <span>Have an Account? <a href="#" onclick="login()">Login</a></span>
+            <header>Sign Up</header>
+          </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <input type="text" class="input-field" id="regFirst" placeholder="Firstname" />
+              <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+              <input type="text" class="input-field" id="regLast" placeholder="Lastname" />
+              <i class="bx bx-user"></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <input type="email" class="input-field" id="regEmail" placeholder="Email" />
+            <i class="bx bx-envelope"></i>
+          </div>
+          <div class="input-box">
+            <input type="password" class="input-field" id="regPassword" placeholder="Password" />
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <input type="button" class="submit" value="Register" onclick="submitRegister()" />
+          </div>
+          <div class="two-col">
+            <div class="one">
+              <input type="checkbox" id="register-check" />
+              <label for="register-check">Remember Me</label>
+            </div>
+            <div class="two">
+              <label><a href="#">Terms & conditions</a></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <!--------------MAIN.JS----------------->
+    <script src="login.js"></script>
+  </body>
+</html>
