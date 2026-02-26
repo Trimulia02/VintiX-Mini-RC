@@ -1357,3 +1357,124 @@ function setupErrorHandlers() {
  * DOM ready handler
  */
 document.addEventListener("DOMContentLoaded", initializeApp);
+
+/* ===== src/js/modules/auth.js ===== */
+
+/* ========================================
+   MODULE: AUTHENTICATION
+   Handle Login & Register tab switching
+   ======================================== */
+
+function initAuth() {
+  const authTabs = document.querySelectorAll('.auth-tab');
+  const authForms = document.querySelectorAll('.auth-form');
+
+  authTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Sembunyikan semua tab dan form
+      authTabs.forEach(t => t.classList.remove('active'));
+      authForms.forEach(f => {
+        f.classList.remove('active');
+        f.classList.add('hidden');
+      });
+
+      // Aktifkan tab dan form yang diklik
+      tab.classList.add('active');
+      const targetFormId = tab.getAttribute('data-target');
+      const targetForm = document.getElementById(targetFormId);
+
+      if (targetForm) {
+        targetForm.classList.remove('hidden');
+        targetForm.classList.add('active');
+      }
+    });
+  });
+}
+// Inisialisasi Auth Modal saat DOM siap
+document.addEventListener("DOMContentLoaded", initAuth);
+
+/* ===== src/js/modules/reviews.js ===== */
+
+/* ========================================
+   MODULE: REVIEWS (DUAL TRACK + LOCAL STORAGE)
+   ======================================== */
+
+function initReviews() {
+  const reviewForm = document.getElementById('reviewForm');
+  const track1 = document.getElementById('track1');
+  const track2 = document.getElementById('track2');
+
+  // Pastikan elemen ditemukan di HTML
+  if (!reviewForm || !track1 || !track2) return;
+
+  const STORAGE_KEY = 'vintix_customer_reviews';
+
+  // Fungsi untuk mencetak HTML kotak komen baru
+  function createReviewHTML(name, initials, stars, date, comment) {
+    return `
+      <div class="review-card" style="border-color: #63f3e5; box-shadow: 0 0 20px rgba(99, 243, 229, 0.15);">
+        <div class="review-header">
+          <div class="reviewer-info">
+            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ff2f72 0%, #ff9a56 100%); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; font-weight: bold; color: white;">${initials}</div>
+            <div class="reviewer-details">
+              <h4 style="margin: 0; color: #f4f8ff;">${name} <span style="font-size: 0.65rem; color: #0c1022; background: #63f3e5; padding: 2px 6px; border-radius: 12px; margin-left: 8px; font-weight: bold;">NEW</span></h4>
+              <div class="review-stars" style="color: #63f3e5; font-size: 0.9rem; letter-spacing: 2px;">${stars}</div>
+            </div>
+          </div>
+          <span class="review-date" style="font-size: 0.8rem; color: rgba(217, 228, 247, 0.5);">${date}</span>
+        </div>
+        <p class="review-text" style="color: rgba(218, 229, 247, 0.85); font-size: 0.95rem; line-height: 1.6; margin: 0;">${comment}</p>
+      </div>
+    `;
+  }
+
+  // 1. BACA LOCAL STORAGE SAAT WEB DIMUAT
+  let savedReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+  
+  // Tampilkan ulasan yang sudah pernah dibuat user sebelumnya ke dalam kedua Track
+  for (let i = savedReviews.length - 1; i >= 0; i--) {
+    const rev = savedReviews[i];
+    const html = createReviewHTML(rev.name, rev.initials, rev.stars, rev.date, rev.comment);
+    track1.insertAdjacentHTML('afterbegin', html);
+    track2.insertAdjacentHTML('afterbegin', html);
+  }
+
+  // 2. TANGANI SAAT KLIK TOMBOL "POST REVIEW"
+  reviewForm.addEventListener('submit', function(e) {
+    e.preventDefault(); // Mencegah halaman ke-refresh
+
+    const name = document.getElementById('revName').value.trim();
+    const rating = parseInt(document.getElementById('revRating').value);
+    const comment = document.getElementById('revComment').value.trim();
+
+    if (!name || !rating || !comment) return;
+
+    // Siapkan data inisial, bintang, dan tanggal
+    const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    const dateOptions = { month: 'short', day: 'numeric', year: 'numeric' };
+    const today = new Date().toLocaleDateString('en-US', dateOptions);
+
+    // Cetak dan masukkan komen baru ke posisi TERDEPAN di Track 1 dan Track 2
+    const newHTML = createReviewHTML(name, initials, stars, today, comment);
+    track1.insertAdjacentHTML('afterbegin', newHTML);
+    track2.insertAdjacentHTML('afterbegin', newHTML);
+
+    // Simpan ke memori browser (Local Storage)
+    savedReviews.unshift({ name, initials, stars, date: today, comment });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedReviews));
+
+    // Notifikasi sukses
+    if (typeof showCartNotification === "function") {
+      showCartNotification("Review posted successfully!");
+    } else {
+      alert("Thank you! Your review has been posted.");
+    }
+
+    // Kosongkan kolom input
+    reviewForm.reset();
+  });
+}
+
+// Jalankan fungsi initReviews saat website selesai dimuat
+document.addEventListener('DOMContentLoaded', initReviews);

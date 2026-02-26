@@ -3158,3 +3158,240 @@ body {
     border-radius: 16px;
   }
 }
+
+
+/* ===== Authentication Modal Extensions ===== */
+
+.auth-tabs {
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  border-bottom: 1px solid rgba(226, 239, 255, 0.12);
+  padding-bottom: var(--spacing-md);
+}
+
+.auth-tab {
+  flex: 1;
+  background: rgba(234, 242, 255, 0.03);
+  border: 1px solid rgba(106, 231, 220, 0.15);
+  color: rgba(240, 247, 255, 0.6);
+  padding: 0.8rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  transition: all var(--transition-fast);
+}
+
+.auth-tab.active {
+  background: linear-gradient(130deg, rgba(64, 230, 216, 0.15) 0%, rgba(255, 47, 114, 0.15) 100%);
+  border-color: rgba(64, 230, 216, 0.8);
+  color: #ffffff;
+  box-shadow: 0 0 20px rgba(64, 230, 216, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+.auth-tab:hover:not(.active) {
+  border-color: rgba(255, 47, 114, 0.6);
+  color: #ffffff;
+  background: rgba(255, 47, 114, 0.05);
+}
+
+.auth-form {
+  display: none;
+  animation: fadeIn 0.4s ease;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+.auth-footer-text {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(217, 228, 247, 0.6);
+}
+
+.auth-footer-text a {
+  color: #63f3e5;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.auth-footer-text a:hover {
+  color: #ff2f72;
+  text-shadow: 0 0 12px rgba(255, 47, 114, 0.5);
+  text-decoration: none;
+}
+
+/* ===== Perfect Infinite Review Marquee ===== */
+.reviews {
+  padding: var(--spacing-3xl) 0;
+  overflow: hidden;
+}
+
+.reviews-marquee {
+  width: 100%;
+  padding: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.marquee-wrapper {
+  display: flex;
+  width: max-content;
+  /* Animasi bergeser sejauh 50% (tepat 1 track) */
+  animation: marqueeScroll 30s linear infinite;
+}
+
+.review-track {
+  display: flex;
+  gap: 2rem;
+  /* Padding kanan ini adalah jarak penyambung antara Track 1 dan Track 2 */
+  padding-right: 2rem; 
+}
+
+/* Pause saat di hover */
+.marquee-wrapper:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  /* Menggeser persis setengah dari total lebar wrapper (lebar 1 track) */
+  100% { transform: translateX(-50%); } 
+}
+
+.review-card {
+  width: 420px;
+  flex-shrink: 0;
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+}
+
+/* Layout Form yang dipusatkan di bawah */
+.centered-form {
+  max-width: 600px;
+  margin: 3rem auto 0;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2rem;
+  text-align: center;
+  border-radius: var(--radius-lg);
+}
+
+.form-row-flex {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-row-flex input { flex: 2; }
+.form-row-flex select { flex: 1; }
+
+.centered-form textarea {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+}
+
+/* ===== PERBAIKAN STYLING CUSTOMER REVIEWS & FORM ===== */
+
+/* 1. Kembalikan Posisi H2 ke Tengah beserta Garis Neonnya */
+.reviews h2 {
+  text-align: center;
+  color: #ffffff;
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  margin-bottom: var(--spacing-2xl);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: var(--spacing-lg);
+  text-shadow: 0 6px 24px rgba(1, 9, 34, 0.55);
+  width: 100%;
+}
+
+.reviews h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(64, 230, 216, 0.2), rgba(64, 230, 216, 0.95), rgba(255, 47, 114, 0.95), rgba(255, 47, 114, 0.2));
+  border-radius: 2px;
+}
+
+/* 2. Perbaiki Input Kolom yang Putih Menjadi Tema Premium Glassmorphism */
+.centered-form input,
+.centered-form select,
+.centered-form textarea {
+  width: 100%;
+  background: rgba(234, 242, 255, 0.06);
+  border: 1px solid rgba(226, 238, 255, 0.2);
+  color: #eef5ff;
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+.centered-form textarea {
+  margin-bottom: 1.5rem;
+  resize: vertical;
+}
+
+/* Mengubah warna tulisan panduan (placeholder) agar lebih elegan */
+.centered-form input::placeholder,
+.centered-form textarea::placeholder {
+  color: rgba(217, 228, 247, 0.5);
+}
+
+/* Memberikan efek cahaya neon saat kolom di-klik/diisi */
+.centered-form input:focus,
+.centered-form select:focus,
+.centered-form textarea:focus {
+  outline: none;
+  border-color: rgba(64, 230, 216, 0.8);
+  box-shadow: 0 0 15px rgba(64, 230, 216, 0.2);
+  background: rgba(234, 242, 255, 0.1);
+}
+
+/* Memperbaiki dropdown rating agar tidak berwarna terang */
+.centered-form select option {
+  background: var(--dark);
+  color: white;
+}
+
+/* Responsivitas form baris */
+.form-row-flex {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+.form-row-flex input { flex: 2; }
+.form-row-flex select { flex: 1; }
+
+@media (max-width: 768px) {
+  .form-row-flex {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.leave {
+  padding-bottom: 20px;
+}
