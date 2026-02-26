@@ -1,0 +1,1996 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 834,
+      "max": [
+        1.1476414203643799,
+        0.29243218898773193,
+        0.050705790519714355
+      ],
+      "min": [
+        -0.9717179536819458,
+        -0.38530194759368896,
+        -1.2243056297302246
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 10008,
+      "componentType": 5126,
+      "count": 834,
+      "max": [
+        0.9949061274528503,
+        0.9993259310722351,
+        0.9998981952667236
+      ],
+      "min": [
+        -0.9989932775497437,
+        -0.9944263100624084,
+        -0.9998981952667236
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 834,
+      "max": [
+        0.954660177230835,
+        0.9751229882240295
+      ],
+      "min": [
+        0.04010382294654846,
+        0.04832044616341591
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 6672,
+      "componentType": 5126,
+      "count": 834,
+      "max": [
+        0.954660177230835,
+        0.9751229882240295
+      ],
+      "min": [
+        0.04010382294654846,
+        0.04832044616341591
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 2676,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 20016,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.7836886644363403,
+        0.9467707872390747,
+        0.9466897249221802
+      ],
+      "min": [
+        -0.0037069995887577534,
+        -0.946608304977417,
+        -0.9466895461082458
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 29904,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9993913173675537,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 13344,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 19936,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 10704,
+      "componentType": 5125,
+      "count": 2433,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 39792,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.7836886644363403,
+        0.9467707872390747,
+        0.9466897249221802
+      ],
+      "min": [
+        -0.0037069995887577534,
+        -0.946608304977417,
+        -0.9466895461082458
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 49680,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9993913173675537,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 26528,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 33120,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 20436,
+      "componentType": 5125,
+      "count": 2433,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 59568,
+      "componentType": 5126,
+      "count": 654,
+      "max": [
+        0.18443931639194489,
+        0.03417995944619179,
+        0.3621333837509155
+      ],
+      "min": [
+        -0.1844392716884613,
+        -0.04949180781841278,
+        -0.1352451741695404
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 67416,
+      "componentType": 5126,
+      "count": 654,
+      "max": [
+        1.0,
+        0.9980919361114502,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 39712,
+      "componentType": 5126,
+      "count": 654,
+      "max": [
+        0.9993218779563904,
+        0.225973978638649
+      ],
+      "min": [
+        0.28469064831733704,
+        0.004304276313632727
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 44944,
+      "componentType": 5126,
+      "count": 654,
+      "max": [
+        0.9993218779563904,
+        0.225973978638649
+      ],
+      "min": [
+        0.28469064831733704,
+        0.004304276313632727
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 50176,
+      "componentType": 5126,
+      "count": 654,
+      "max": [
+        0.9993218779563904,
+        0.225973978638649
+      ],
+      "min": [
+        0.28469064831733704,
+        0.004304276313632727
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 30168,
+      "componentType": 5125,
+      "count": 1716,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 75264,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.7836886644363403,
+        0.9467707872390747,
+        0.9466897249221802
+      ],
+      "min": [
+        -0.0037069995887577534,
+        -0.946608304977417,
+        -0.9466895461082458
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 85152,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9993913173675537,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 55408,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 62000,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 37032,
+      "componentType": 5125,
+      "count": 2433,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 95040,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.7836886644363403,
+        0.9467707872390747,
+        0.9466897249221802
+      ],
+      "min": [
+        -0.0037069995887577534,
+        -0.946608304977417,
+        -0.9466895461082458
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 104928,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -0.9993913173675537,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 68592,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 75184,
+      "componentType": 5126,
+      "count": 824,
+      "max": [
+        0.9891248941421509,
+        0.9884767532348633
+      ],
+      "min": [
+        0.013529650866985321,
+        0.005897914990782738
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 46764,
+      "componentType": 5125,
+      "count": 2433,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 114816,
+      "componentType": 5126,
+      "count": 1993,
+      "max": [
+        1.1446257829666138,
+        0.9808424115180969,
+        0.08489620685577393
+      ],
+      "min": [
+        -0.9757770895957947,
+        -0.4526289403438568,
+        -1.2612476348876953
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 138732,
+      "componentType": 5126,
+      "count": 1993,
+      "max": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "min": [
+        -1.0,
+        -1.0,
+        -1.0
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 81776,
+      "componentType": 5126,
+      "count": 1993,
+      "max": [
+        0.998780369758606,
+        0.9977103471755981
+      ],
+      "min": [
+        0.00403598602861166,
+        0.0036055445671081543
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 97720,
+      "componentType": 5126,
+      "count": 1993,
+      "max": [
+        0.998780369758606,
+        0.9977103471755981
+      ],
+      "min": [
+        0.00403598602861166,
+        0.0036055445671081543
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 113664,
+      "componentType": 5126,
+      "count": 1993,
+      "max": [
+        0.998780369758606,
+        0.9977103471755981
+      ],
+      "min": [
+        0.00403598602861166,
+        0.0036055445671081543
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 56496,
+      "componentType": 5125,
+      "count": 6618,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 162648,
+      "componentType": 5126,
+      "count": 195,
+      "max": [
+        1.1997910737991333,
+        -0.07525220513343811,
+        0.03368580341339111
+      ],
+      "min": [
+        0.9224220514297485,
+        -0.3067513704299927,
+        -1.2072856426239014
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 164988,
+      "componentType": 5126,
+      "count": 195,
+      "max": [
+        0.9982438683509827,
+        0.9889591336250305,
+        0.996536135673523
+      ],
+      "min": [
+        -0.9980710744857788,
+        -0.996705949306488,
+        -0.996536135673523
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 129608,
+      "componentType": 5126,
+      "count": 195,
+      "max": [
+        0.5773447155952454,
+        0.9976257085800171
+      ],
+      "min": [
+        0.13936303555965424,
+        0.5030695796012878
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 131168,
+      "componentType": 5126,
+      "count": 195,
+      "max": [
+        0.5773447155952454,
+        0.9976257085800171
+      ],
+      "min": [
+        0.13936303555965424,
+        0.5030695796012878
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 132728,
+      "componentType": 5126,
+      "count": 195,
+      "max": [
+        0.5773447155952454,
+        0.9976257085800171
+      ],
+      "min": [
+        0.13936303555965424,
+        0.5030695796012878
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 82968,
+      "componentType": 5125,
+      "count": 852,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 167328,
+      "componentType": 5126,
+      "count": 52,
+      "max": [
+        1.1404110193252563,
+        0.11482580006122589,
+        -0.06792771816253662
+      ],
+      "min": [
+        1.1230478286743164,
+        0.015863750129938126,
+        -1.1056721210479736
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 167952,
+      "componentType": 5126,
+      "count": 52,
+      "max": [
+        1.0,
+        0.1975867599248886,
+        0.2379481941461563
+      ],
+      "min": [
+        0.9712778329849243,
+        -0.1975867599248886,
+        -0.2379482090473175
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 134288,
+      "componentType": 5126,
+      "count": 52,
+      "max": [
+        0.801644504070282,
+        0.1175970807671547
+      ],
+      "min": [
+        0.7339342832565308,
+        0.05382542312145233
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 86376,
+      "componentType": 5125,
+      "count": 144,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 168576,
+      "componentType": 5126,
+      "count": 26,
+      "max": [
+        -0.949303388595581,
+        0.0013965964317321777,
+        -0.0076291561126708984
+      ],
+      "min": [
+        -0.9592769145965576,
+        -0.0975654125213623,
+        -1.1659706830978394
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 168888,
+      "componentType": 5126,
+      "count": 26,
+      "max": [
+        -0.9712772965431213,
+        0.19758881628513336,
+        0.2379509061574936
+      ],
+      "min": [
+        -1.0,
+        -0.19758908450603485,
+        -0.2379508912563324
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 134704,
+      "componentType": 5126,
+      "count": 26,
+      "max": [
+        0.8019230961799622,
+        0.11790181696414948
+      ],
+      "min": [
+        0.7329874634742737,
+        0.05308890715241432
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 86952,
+      "componentType": 5125,
+      "count": 72,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 169200,
+      "componentType": 5126,
+      "count": 18,
+      "max": [
+        -0.9200595021247864,
+        0.2089594304561615,
+        -0.007734417915344238
+      ],
+      "min": [
+        -0.9625566005706787,
+        -0.013805750757455826,
+        -1.165865421295166
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 169416,
+      "componentType": 5126,
+      "count": 18,
+      "max": [
+        -0.9517261385917664,
+        -0.16196537017822266,
+        0.2212080955505371
+      ],
+      "min": [
+        -0.9820200204849243,
+        -0.2710603177547455,
+        -0.22120828926563263
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 134912,
+      "componentType": 5126,
+      "count": 18,
+      "max": [
+        0.493762344121933,
+        0.8065396547317505
+      ],
+      "min": [
+        0.25521135330200195,
+        0.7538701891899109
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 87240,
+      "componentType": 5125,
+      "count": 48,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 169632,
+      "componentType": 5126,
+      "count": 165,
+      "max": [
+        -0.8184601664543152,
+        -0.15451422333717346,
+        0.035527586936950684
+      ],
+      "min": [
+        -1.0142199993133545,
+        -0.34265512228012085,
+        -1.209127426147461
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 171612,
+      "componentType": 5126,
+      "count": 165,
+      "max": [
+        0.9596959352493286,
+        0.9583906531333923,
+        0.9897266030311584
+      ],
+      "min": [
+        -0.9982938766479492,
+        -0.9968131184577942,
+        -0.9897266030311584
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 135056,
+      "componentType": 5126,
+      "count": 165,
+      "max": [
+        0.5887604355812073,
+        0.9977103471755981
+      ],
+      "min": [
+        0.12770305573940277,
+        0.3546968102455139
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 136376,
+      "componentType": 5126,
+      "count": 165,
+      "max": [
+        0.5887604355812073,
+        0.9977103471755981
+      ],
+      "min": [
+        0.12770305573940277,
+        0.3546968102455139
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 137696,
+      "componentType": 5126,
+      "count": 165,
+      "max": [
+        0.5887604355812073,
+        0.9977103471755981
+      ],
+      "min": [
+        0.12770305573940277,
+        0.3546968102455139
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 87432,
+      "componentType": 5125,
+      "count": 630,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "Daniel Zhabotinsky (https://sketchfab.com/DanielZhabotinsky)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/rc-highwayman-low-poly-model-6fffef601f2f4ccfa0c12cee673ad8b5",
+      "title": "RC Highwayman - Low poly model"
+    },
+    "generator": "Sketchfab-16.74.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 89952,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 139016,
+      "byteOffset": 89952,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 173592,
+      "byteOffset": 228968,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 402560,
+      "uri": "scene.bin"
+    }
+  ],
+  "extensionsUsed": [
+    "KHR_texture_transform",
+    "KHR_materials_clearcoat",
+    "KHR_materials_specular"
+  ],
+  "images": [
+    {
+      "uri": "textures/RCHighwayman_Bodymat_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/RCHighwayman_Bodymat_specularf0.png"
+    },
+    {
+      "uri": "textures/RB0a_Tire_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/RB0a_Tire_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/RB0a_Tire_specularf0.png"
+    },
+    {
+      "uri": "textures/UCB_BOTTOM_baseColor.jpeg"
+    },
+    {
+      "uri": "textures/UCB_BOTTOM_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/UCB_BOTTOM_specularf0.png"
+    },
+    {
+      "uri": "textures/UCB_Lights_and_Glass_baseColor.jpeg"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_clearcoat": {
+          "clearcoatFactor": 0.4976831282573631,
+          "clearcoatRoughnessFactor": 0.04
+        },
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 1.0,
+          "specularTexture": {
+            "index": 1
+          }
+        }
+      },
+      "name": "RCHighwayman_Bodymat",
+      "occlusionTexture": {
+        "index": 0
+      },
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.30946892281750854,
+          0.00651209079259448,
+          0.004776953480693732,
+          1.0
+        ],
+        "metallicRoughnessTexture": {
+          "extensions": {
+            "KHR_texture_transform": {
+              "scale": [
+                20.000000000000004,
+                20.000000000000004
+              ]
+            }
+          },
+          "index": 0
+        },
+        "roughnessFactor": 0.17690762518707168
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 1.0,
+          "specularTexture": {
+            "index": 4
+          }
+        }
+      },
+      "name": "RB0a_Tire",
+      "occlusionTexture": {
+        "index": 3
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 2
+        },
+        "metallicRoughnessTexture": {
+          "index": 3
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "extensions": {
+        "KHR_materials_specular": {
+          "specularColorFactor": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "specularFactor": 1.0,
+          "specularTexture": {
+            "index": 7
+          }
+        }
+      },
+      "name": "UCB_BOTTOM",
+      "occlusionTexture": {
+        "index": 6
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 5
+        },
+        "metallicRoughnessTexture": {
+          "index": 6
+        }
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "UCB_Lights_and_Glass",
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 8
+        },
+        "metallicFactor": 0.0,
+        "roughnessFactor": 0.04220739904072067
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "RCHighwayman_Body_RCHighwayman_Bodymat_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TEXCOORD_0": 2,
+            "TEXCOORD_1": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_WheelStock_RR_RB0a_Tire_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TEXCOORD_0": 7,
+            "TEXCOORD_1": 8
+          },
+          "indices": 9,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_WheelStock_RR_RB0a_Tire_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 11,
+            "POSITION": 10,
+            "TEXCOORD_0": 12,
+            "TEXCOORD_1": 13
+          },
+          "indices": 14,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_Suspension_UCB_BOTTOM_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 16,
+            "POSITION": 15,
+            "TEXCOORD_0": 17,
+            "TEXCOORD_1": 18,
+            "TEXCOORD_2": 19
+          },
+          "indices": 20,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_WheelStock_FL_RB0a_Tire_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 22,
+            "POSITION": 21,
+            "TEXCOORD_0": 23,
+            "TEXCOORD_1": 24
+          },
+          "indices": 25,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_WheelStock_FR_RB0a_Tire_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 27,
+            "POSITION": 26,
+            "TEXCOORD_0": 28,
+            "TEXCOORD_1": 29
+          },
+          "indices": 30,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_Bottom_UCB_BOTTOM_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 32,
+            "POSITION": 31,
+            "TEXCOORD_0": 33,
+            "TEXCOORD_1": 34,
+            "TEXCOORD_2": 35
+          },
+          "indices": 36,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_Bumper_Front_UCB_BOTTOM_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 38,
+            "POSITION": 37,
+            "TEXCOORD_0": 39,
+            "TEXCOORD_1": 40,
+            "TEXCOORD_2": 41
+          },
+          "indices": 42,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_Headlights_UCB_Lights_and_Glass_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 44,
+            "POSITION": 43,
+            "TEXCOORD_0": 45
+          },
+          "indices": 46,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_Reverse_UCB_Lights_and_Glass_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 48,
+            "POSITION": 47,
+            "TEXCOORD_0": 49
+          },
+          "indices": 50,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_Brakelights_UCB_Lights_and_Glass_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 52,
+            "POSITION": 51,
+            "TEXCOORD_0": 53
+          },
+          "indices": 54,
+          "material": 3,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "RCHighwayman_Bumper_Rear_UCB_BOTTOM_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 56,
+            "POSITION": 55,
+            "TEXCOORD_0": 57,
+            "TEXCOORD_1": 58,
+            "TEXCOORD_2": 59
+          },
+          "indices": 60,
+          "material": 2,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "56fc53dd53024fbaa0f05871a07763f2.fbx"
+    },
+    {
+      "children": [
+        3,
+        6,
+        9,
+        12,
+        15,
+        18,
+        21,
+        24,
+        27,
+        30,
+        33,
+        36
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        0.23448899388311292,
+        5.933773135761963e-24,
+        -9.69058959296773e-08,
+        0.0,
+        1.2989501794813366e-14,
+        0.19292500615119676,
+        3.143147461599028e-08,
+        0.0,
+        9.690589592967602e-08,
+        -3.820310806775944e-08,
+        0.2344889938831098,
+        0.0,
+        -0.0011311136186122894,
+        0.09548667818307877,
+        9.926003986038268e-05,
+        1.0
+      ],
+      "name": "RCHighwayman_Body"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -0.08796173334121704,
+        0.04643487185239792,
+        0.5867999196052551,
+        1.0
+      ],
+      "name": "Object_4"
+    },
+    {
+      "mesh": 0,
+      "name": "RCHighwayman_Body_RCHighwayman_Bodymat_0"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        6.686042073337569e-10,
+        -3.112399196833622e-18,
+        -0.056067999452352524,
+        0.0,
+        -0.052466001361608505,
+        5.8248962721672576e-18,
+        -6.256508067291683e-10,
+        0.0,
+        2.9124481360836288e-18,
+        0.052466001361608505,
+        0.0,
+        0.0,
+        -0.1036553829908371,
+        0.050435639917850494,
+        -0.11192689836025238,
+        1.0
+      ],
+      "name": "RCHighwayman_WheelStock_RR"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -0.389990895986557,
+        -8.125558088067919e-05,
+        -8.072226620470246e-08,
+        1.0
+      ],
+      "name": "Object_7"
+    },
+    {
+      "mesh": 1,
+      "name": "RCHighwayman_WheelStock_RR_RB0a_Tire_0"
+    },
+    {
+      "children": [
+        10
+      ],
+      "matrix": [
+        6.8591167351381985e-09,
+        -9.337197590500866e-18,
+        0.056067999452352114,
+        0.0,
+        -0.05246600136160729,
+        -9.313246252530678e-09,
+        6.418463856036383e-09,
+        0.0,
+        9.313246255443127e-09,
+        -0.052466001361607686,
+        -1.1416796693447825e-15,
+        0.0,
+        -0.1036553606390953,
+        0.05043564736843109,
+        0.11212541162967682,
+        1.0
+      ],
+      "name": "RCHighwayman_WheelStock_RR"
+    },
+    {
+      "children": [
+        11
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -0.389990895986557,
+        -8.13515143818222e-05,
+        -8.808696350115497e-08,
+        1.0
+      ],
+      "name": "Object_10"
+    },
+    {
+      "mesh": 2,
+      "name": "RCHighwayman_WheelStock_RR_RB0a_Tire_0"
+    },
+    {
+      "children": [
+        13
+      ],
+      "matrix": [
+        3.2079535020479186e-08,
+        -1.3969346124879982e-23,
+        0.5277469754219046,
+        0.0,
+        -1.1126114099788454e-07,
+        0.6829159855842499,
+        6.763100198586786e-15,
+        0.0,
+        -0.6829159855842487,
+        -1.1126114099788474e-07,
+        4.1511611237717315e-08,
+        0.0,
+        0.008776180446147919,
+        0.05538059026002884,
+        9.924359619617462e-05,
+        1.0
+      ],
+      "name": "RCHighwayman_Suspension"
+    },
+    {
+      "children": [
+        14
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -2.2351741790771484e-08,
+        0.007655927445739508,
+        -0.11344410479068756,
+        1.0
+      ],
+      "name": "Object_13"
+    },
+    {
+      "mesh": 3,
+      "name": "RCHighwayman_Suspension_UCB_BOTTOM_0"
+    },
+    {
+      "children": [
+        16
+      ],
+      "matrix": [
+        6.686042073337569e-10,
+        -3.112399196833622e-18,
+        -0.056067999452352524,
+        0.0,
+        -0.052466001361608505,
+        5.8248962721672576e-18,
+        -6.256508067291683e-10,
+        0.0,
+        2.9124481360836288e-18,
+        0.052466001361608505,
+        0.0,
+        0.0,
+        0.13362213969230652,
+        0.050435639917850494,
+        -0.11192692816257477,
+        1.0
+      ],
+      "name": "RCHighwayman_WheelStock_FL"
+    },
+    {
+      "children": [
+        17
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -0.389990895986557,
+        -8.125558088067919e-05,
+        -8.072226620470246e-08,
+        1.0
+      ],
+      "name": "Object_16"
+    },
+    {
+      "mesh": 4,
+      "name": "RCHighwayman_WheelStock_FL_RB0a_Tire_0"
+    },
+    {
+      "children": [
+        19
+      ],
+      "matrix": [
+        6.8591167351381985e-09,
+        -9.337197590500866e-18,
+        0.056067999452352114,
+        0.0,
+        -0.05246600136160729,
+        -9.313246252530678e-09,
+        6.418463856036383e-09,
+        0.0,
+        9.313246255443127e-09,
+        -0.052466001361607686,
+        -1.1416796693447825e-15,
+        0.0,
+        0.1336221694946289,
+        0.050435639917850494,
+        0.11212538182735443,
+        1.0
+      ],
+      "name": "RCHighwayman_WheelStock_FR"
+    },
+    {
+      "children": [
+        20
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -0.389990895986557,
+        -8.120950951706618e-05,
+        -8.808700613371911e-08,
+        1.0
+      ],
+      "name": "Object_19"
+    },
+    {
+      "mesh": 5,
+      "name": "RCHighwayman_WheelStock_FR_RB0a_Tire_0"
+    },
+    {
+      "children": [
+        22
+      ],
+      "matrix": [
+        0.23448899388312225,
+        4.336089287623234e-24,
+        -7.081370583273882e-08,
+        0.0,
+        9.49204122398551e-15,
+        0.19292500615119676,
+        3.143147461599155e-08,
+        0.0,
+        7.081370583273787e-08,
+        -3.8203108067759455e-08,
+        0.23448899388311914,
+        0.0,
+        -0.0019605904817581177,
+        0.15539798140525818,
+        -0.0002233500126749277,
+        1.0
+      ],
+      "name": "RCHighwayman_Bottom"
+    },
+    {
+      "children": [
+        23
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -0.08442434668540955,
+        -0.26410675048828125,
+        0.5881757140159607,
+        1.0
+      ],
+      "name": "Object_22"
+    },
+    {
+      "mesh": 6,
+      "name": "RCHighwayman_Bottom_UCB_BOTTOM_0"
+    },
+    {
+      "children": [
+        25
+      ],
+      "matrix": [
+        0.23448899388312225,
+        4.336089287623234e-24,
+        -7.081370583273882e-08,
+        0.0,
+        9.49204122398551e-15,
+        0.19292500615119676,
+        3.143147461599155e-08,
+        0.0,
+        7.081370583273787e-08,
+        -3.8203108067759455e-08,
+        0.23448899388311914,
+        0.0,
+        0.22706064581871033,
+        0.06759607791900635,
+        9.919540025293827e-05,
+        1.0
+      ],
+      "name": "RCHighwayman_Bumper_Front"
+    },
+    {
+      "children": [
+        26
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.061106562614441,
+        0.1910018026828766,
+        0.5867999196052551,
+        1.0
+      ],
+      "name": "Object_25"
+    },
+    {
+      "mesh": 7,
+      "name": "RCHighwayman_Bumper_Front_UCB_BOTTOM_0"
+    },
+    {
+      "children": [
+        28
+      ],
+      "matrix": [
+        0.23448899388312225,
+        4.336089287623234e-24,
+        -7.081370583273882e-08,
+        0.0,
+        9.49204122398551e-15,
+        0.19292500615119676,
+        3.143147461599155e-08,
+        0.0,
+        7.081370583273787e-08,
+        -3.8203108067759455e-08,
+        0.23448899388311914,
+        0.0,
+        0.24362093210220337,
+        0.11705178022384644,
+        9.919394506141543e-05,
+        1.0
+      ],
+      "name": "RCHighwayman_Headlights"
+    },
+    {
+      "children": [
+        29
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        -1.1317293643951416,
+        -0.06534475088119507,
+        0.5867999196052551,
+        1.0
+      ],
+      "name": "Object_28"
+    },
+    {
+      "mesh": 8,
+      "name": "RCHighwayman_Headlights_UCB_Lights_and_Glass_0"
+    },
+    {
+      "children": [
+        31
+      ],
+      "matrix": [
+        0.23448899388312225,
+        4.336089287623234e-24,
+        -7.081370583273882e-08,
+        0.0,
+        9.49204122398551e-15,
+        0.19292500615119676,
+        3.143147461599155e-08,
+        0.0,
+        7.081370583273787e-08,
+        -3.8203108067759455e-08,
+        0.23448899388311914,
+        0.0,
+        -0.2455277442932129,
+        0.09516844153404236,
+        9.931123349815607e-05,
+        1.0
+      ],
+      "name": "RCHighwayman_Reverse"
+    },
+    {
+      "children": [
+        32
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.9542901515960693,
+        0.04808440059423447,
+        0.5867999196052551,
+        1.0
+      ],
+      "name": "Object_31"
+    },
+    {
+      "mesh": 9,
+      "name": "RCHighwayman_Reverse_UCB_Lights_and_Glass_0"
+    },
+    {
+      "children": [
+        34
+      ],
+      "matrix": [
+        0.23448899388312225,
+        4.336089287623234e-24,
+        -7.081370583273882e-08,
+        0.0,
+        9.49204122398551e-15,
+        0.19292500615119676,
+        3.143147461599155e-08,
+        0.0,
+        7.081370583273787e-08,
+        -3.8203108067759455e-08,
+        0.23448899388311914,
+        0.0,
+        -0.24248358607292175,
+        0.12327015399932861,
+        9.93109424598515e-05,
+        1.0
+      ],
+      "name": "RCHighwayman_Brakelights"
+    },
+    {
+      "children": [
+        35
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.9413080215454102,
+        -0.09757683426141739,
+        0.5867999196052551,
+        1.0
+      ],
+      "name": "Object_34"
+    },
+    {
+      "mesh": 10,
+      "name": "RCHighwayman_Brakelights_UCB_Lights_and_Glass_0"
+    },
+    {
+      "children": [
+        37
+      ],
+      "matrix": [
+        0.23448899388312225,
+        4.336089287623234e-24,
+        -7.081370583273882e-08,
+        0.0,
+        9.49204122398551e-15,
+        0.19292500615119676,
+        3.143147461599155e-08,
+        0.0,
+        7.081370583273787e-08,
+        -3.8203108067759455e-08,
+        0.23448899388311914,
+        0.0,
+        -0.23662889003753662,
+        0.056486889719963074,
+        9.931044769473374e-05,
+        1.0
+      ],
+      "name": "RCHighwayman_Bumper_Rear"
+    },
+    {
+      "children": [
+        38
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        -0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.916340172290802,
+        0.24858464300632477,
+        0.5867998600006104,
+        1.0
+      ],
+      "name": "Object_37"
+    },
+    {
+      "mesh": 11,
+      "name": "RCHighwayman_Bumper_Rear_UCB_BOTTOM_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    },
+    {
+      "sampler": 0,
+      "source": 3
+    },
+    {
+      "sampler": 0,
+      "source": 4
+    },
+    {
+      "sampler": 0,
+      "source": 5
+    },
+    {
+      "sampler": 0,
+      "source": 6
+    },
+    {
+      "sampler": 0,
+      "source": 7
+    },
+    {
+      "sampler": 0,
+      "source": 8
+    }
+  ]
+}
