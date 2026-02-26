@@ -43,14 +43,12 @@ const CONFIG = {
   },
 };
 
-
 /* ===== src/js/utils/formatter.js ===== */
 
 /* ========================================
    UTILITY: FORMATTER
    Format numbers, currency, dates
    ======================================== */
-
 
 /**
  * Format number to Indonesian Rupiah currency
@@ -75,14 +73,12 @@ function parsePrice(priceText) {
   return parseInt(priceText.replace(/[^\d]/g, "")) || 0;
 }
 
-
 /* ===== src/js/utils/storage.js ===== */
 
 /* ========================================
    UTILITY: STORAGE
    Handle localStorage operations
    ======================================== */
-
 
 /**
  * Save cart to localStorage
@@ -338,14 +334,12 @@ function closeModal(modalId) {
   }
 }
 
-
 /* ===== src/js/modules/cart.js ===== */
 
 /* ========================================
    MODULE: CART MANAGEMENT
    Handle shopping cart operations
    ======================================== */
-
 
 let cart = [];
 const PRODUCT_MODEL_MAP = {
@@ -482,7 +476,10 @@ function getModelPathByProduct(productName) {
  * @returns {{subtotal: number, tax: number, total: number}}
  */
 function calculateCartTotals() {
-  const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
   const tax = subtotal * CONFIG.TAX_RATE;
   return { subtotal, tax, total: subtotal + tax };
 }
@@ -697,14 +694,12 @@ function clearCartItems() {
   saveCart(cart);
 }
 
-
 /* ===== src/js/modules/checkout.js ===== */
 
 /* ========================================
    MODULE: CHECKOUT & PAYMENT
    Handle payment and checkout flow
    ======================================== */
-
 
 /**
  * Initialize checkout functionality
@@ -787,7 +782,6 @@ function showPaymentSuccess(totalAmount) {
    MODULE: PRODUCT PREVIEW
    Handle 3D model preview modal
    ======================================== */
-
 
 /**
  * Initialize product preview
@@ -934,14 +928,12 @@ function updatePreviewSpecs(specs) {
   });
 }
 
-
 /* ===== src/js/modules/animations.js ===== */
 
 /* ========================================
    MODULE: ANIMATIONS
    Handle scroll animations and effects
    ======================================== */
-
 
 /**
  * Initialize animations
@@ -1173,7 +1165,9 @@ function getStickyNavOffset() {
   const navbarStyles = window.getComputedStyle(navbar);
   const navbarMarginBottom = parseFloat(navbarStyles.marginBottom) || 0;
 
-  return Math.ceil(navbar.getBoundingClientRect().height + navbarMarginBottom + 8);
+  return Math.ceil(
+    navbar.getBoundingClientRect().height + navbarMarginBottom + 8,
+  );
 }
 
 /**
@@ -1233,7 +1227,10 @@ function updateActiveNav() {
   });
 
   navLinks.forEach((link) => {
-    link.classList.toggle("is-active", link.getAttribute("href") === `#${current}`);
+    link.classList.toggle(
+      "is-active",
+      link.getAttribute("href") === `#${current}`,
+    );
   });
 }
 
@@ -1254,7 +1251,6 @@ function scrollToSection(sectionId) {
    MODULE: BUTTONS
    Handle button interactions
    ======================================== */
-
 
 /**
  * Initialize button handlers
@@ -1290,7 +1286,6 @@ function handleNotifyButton() {
   });
 }
 
-
 /* ===== src/js/main.js ===== */
 
 /* ========================================
@@ -1320,6 +1315,8 @@ function initializeApp() {
   initModals();
   initCheckout();
   initProductPreview();
+  initAuth();
+  initReviews();
 
   // Setup error handling
   setupErrorHandlers();
@@ -1366,115 +1363,115 @@ document.addEventListener("DOMContentLoaded", initializeApp);
    ======================================== */
 
 function initAuth() {
-  const authTabs = document.querySelectorAll('.auth-tab');
-  const authForms = document.querySelectorAll('.auth-form');
+  const authTabs = document.querySelectorAll(".auth-tab");
+  const authForms = document.querySelectorAll(".auth-form");
 
-  authTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
+  authTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
       // Sembunyikan semua tab dan form
-      authTabs.forEach(t => t.classList.remove('active'));
-      authForms.forEach(f => {
-        f.classList.remove('active');
-        f.classList.add('hidden');
+      authTabs.forEach((t) => t.classList.remove("active"));
+      authForms.forEach((f) => {
+        f.classList.remove("active");
+        f.classList.add("hidden");
       });
 
       // Aktifkan tab dan form yang diklik
-      tab.classList.add('active');
-      const targetFormId = tab.getAttribute('data-target');
+      tab.classList.add("active");
+      const targetFormId = tab.getAttribute("data-target");
       const targetForm = document.getElementById(targetFormId);
 
       if (targetForm) {
-        targetForm.classList.remove('hidden');
-        targetForm.classList.add('active');
+        targetForm.classList.remove("hidden");
+        targetForm.classList.add("active");
       }
     });
   });
 }
-// Inisialisasi Auth Modal saat DOM siap
-document.addEventListener("DOMContentLoaded", initAuth);
 
 /* ===== src/js/modules/reviews.js ===== */
 
-/* ========================================
-   MODULE: REVIEWS (DUAL TRACK + LOCAL STORAGE)
-   ======================================== */
-
 function initReviews() {
-  const reviewForm = document.getElementById('reviewForm');
-  const track1 = document.getElementById('track1');
-  const track2 = document.getElementById('track2');
+  const track1 = document.getElementById("track1");
+  const track2 = document.getElementById("track2");
 
-  // Pastikan elemen ditemukan di HTML
-  if (!reviewForm || !track1 || !track2) return;
+  if (!track1 || !track2) return;
 
-  const STORAGE_KEY = 'vintix_customer_reviews';
+  // Daftar ulasan yang akan terus berputar
+  const reviewsData = [
+    {
+      name: "Ralffli Galon",
+      initials: "RG",
+      stars: "★★★★★",
+      date: "Oct 20, 2025",
+      comment: "Keren banget buat dipajang di meja kerja! Mobilnya responsif.",
+    },
+    {
+      name: "Bima Sayur",
+      initials: "BS",
+      stars: "★★★★☆",
+      date: "Oct 18, 2025",
+      comment: "Detailnya mantap, lumayan buat main di sela-sela coding.",
+    },
+    {
+      name: "Bina Malay",
+      initials: "BM",
+      stars: "★★★★★",
+      date: "Oct 15, 2025",
+      comment:
+        "Absolutely love the RC Highwayman! The low-poly design looks amazing on my desk.",
+    },
+    {
+      name: "Tri Cupang",
+      initials: "TC",
+      stars: "★★★★☆",
+      date: "Oct 12, 2025",
+      comment:
+        "Great quality and fast shipping. The RC Annihilator is incredibly fast.",
+    },
+    {
+      name: "Hariz Vermak",
+      initials: "HV",
+      stars: "★★★★☆",
+      date: "Oct 12, 2025",
+      comment:
+        "Great quality and fast shipping. The RC Annihilator is incredibly fast.",
+    },
+    {
+      name: "Aaron Sembako",
+      initials: "AS",
+      stars: "★★★★☆",
+      date: "Oct 12, 2025",
+      comment:
+        "Great quality and fast shipping. The RC Annihilator is incredibly fast.",
+    },
+  ];
 
-  // Fungsi untuk mencetak HTML kotak komen baru
-  function createReviewHTML(name, initials, stars, date, comment) {
+  // Template HTML untuk merakit kotak ulasan
+  function createReviewHTML(rev) {
     return `
-      <div class="review-card" style="border-color: #63f3e5; box-shadow: 0 0 20px rgba(99, 243, 229, 0.15);">
+      <div class="review-card">
         <div class="review-header">
           <div class="reviewer-info">
-            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ff2f72 0%, #ff9a56 100%); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; font-weight: bold; color: white;">${initials}</div>
+            <div class="reviewer-avatar" style="background: linear-gradient(135deg, #ff2f72 0%, #ff9a56 100%); display: flex; align-items: center; justify-content: center; width: 45px; height: 45px; border-radius: 50%; font-weight: bold; color: white;">${rev.initials}</div>
             <div class="reviewer-details">
-              <h4 style="margin: 0; color: #f4f8ff;">${name} <span style="font-size: 0.65rem; color: #0c1022; background: #63f3e5; padding: 2px 6px; border-radius: 12px; margin-left: 8px; font-weight: bold;">NEW</span></h4>
-              <div class="review-stars" style="color: #63f3e5; font-size: 0.9rem; letter-spacing: 2px;">${stars}</div>
+              <h4 style="margin: 0; color: #f4f8ff;">${rev.name}</h4>
+              <div class="review-stars" style="color: #63f3e5; font-size: 0.9rem; letter-spacing: 2px;">${rev.stars}</div>
             </div>
           </div>
-          <span class="review-date" style="font-size: 0.8rem; color: rgba(217, 228, 247, 0.5);">${date}</span>
+          <span class="review-date" style="font-size: 0.8rem; color: rgba(217, 228, 247, 0.5);">${rev.date}</span>
         </div>
-        <p class="review-text" style="color: rgba(218, 229, 247, 0.85); font-size: 0.95rem; line-height: 1.6; margin: 0;">${comment}</p>
+        <p class="review-text" style="color: rgba(218, 229, 247, 0.85); font-size: 0.95rem; line-height: 1.6; margin: 0;">${rev.comment}</p>
       </div>
     `;
   }
 
-  // 1. BACA LOCAL STORAGE SAAT WEB DIMUAT
-  let savedReviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
-  
-  // Tampilkan ulasan yang sudah pernah dibuat user sebelumnya ke dalam kedua Track
-  for (let i = savedReviews.length - 1; i >= 0; i--) {
-    const rev = savedReviews[i];
-    const html = createReviewHTML(rev.name, rev.initials, rev.stars, rev.date, rev.comment);
-    track1.insertAdjacentHTML('afterbegin', html);
-    track2.insertAdjacentHTML('afterbegin', html);
-  }
+  // Bersihkan track dan isi dengan data ulasan di atas secara berurutan
+  track1.innerHTML = "";
+  track2.innerHTML = "";
 
-  // 2. TANGANI SAAT KLIK TOMBOL "POST REVIEW"
-  reviewForm.addEventListener('submit', function(e) {
-    e.preventDefault(); // Mencegah halaman ke-refresh
-
-    const name = document.getElementById('revName').value.trim();
-    const rating = parseInt(document.getElementById('revRating').value);
-    const comment = document.getElementById('revComment').value.trim();
-
-    if (!name || !rating || !comment) return;
-
-    // Siapkan data inisial, bintang, dan tanggal
-    const initials = name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
-    const stars = '★'.repeat(rating) + '☆'.repeat(5 - rating);
-    const dateOptions = { month: 'short', day: 'numeric', year: 'numeric' };
-    const today = new Date().toLocaleDateString('en-US', dateOptions);
-
-    // Cetak dan masukkan komen baru ke posisi TERDEPAN di Track 1 dan Track 2
-    const newHTML = createReviewHTML(name, initials, stars, today, comment);
-    track1.insertAdjacentHTML('afterbegin', newHTML);
-    track2.insertAdjacentHTML('afterbegin', newHTML);
-
-    // Simpan ke memori browser (Local Storage)
-    savedReviews.unshift({ name, initials, stars, date: today, comment });
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(savedReviews));
-
-    // Notifikasi sukses
-    if (typeof showCartNotification === "function") {
-      showCartNotification("Review posted successfully!");
-    } else {
-      alert("Thank you! Your review has been posted.");
-    }
-
-    // Kosongkan kolom input
-    reviewForm.reset();
+  reviewsData.forEach((rev) => {
+    const html = createReviewHTML(rev);
+    track1.insertAdjacentHTML("beforeend", html);
+    track2.insertAdjacentHTML("beforeend", html); // Track 2 dibuat kembar identik
   });
 }
-
-// Jalankan fungsi initReviews saat website selesai dimuat
-document.addEventListener('DOMContentLoaded', initReviews);

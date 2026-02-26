@@ -35,7 +35,16 @@
           <li><a href="#models">OUR MODELS</a></li>
           <li><a href="#features">FEATURES</a></li>
           <li><a href="#gallery">GALLERY</a></li>
-          <li><a href="#" onclick="document.getElementById('authModal').classList.add('active'); return false;">LOGIN</a></li>
+          <li>
+            <a
+              href="#"
+              onclick="
+                document.getElementById('authModal').classList.add('active');
+                return false;
+              "
+              >LOGIN</a
+            >
+          </li>
         </ul>
         <div class="cart-icon" id="cartIcon">
           <span class="cart-emoji">🛒</span>
@@ -54,11 +63,7 @@
           <h2>THE HOME OF</h2>
           <h1>PREMIUM RC CARS</h1>
           <p>Experience the Ultimate in Remote Control Vehicles</p>
-          <button
-            class="btn-primary"
-            type="button"
-            data-scroll-target="models"
-          >
+          <button class="btn-primary" type="button" data-scroll-target="models">
             EXPLORE NOW
           </button>
         </div>
@@ -91,18 +96,6 @@
         <div class="feature-icon">🎮</div>
         <h3>PINPOINT CONTROL</h3>
         <p>Zero-latency 2.4GHz transmitter ensures ultra-responsive handling. Easily drift around your keyboard and coffee mug.</p>
-        <h3>HIGH PERFORMANCE</h3>
-        <p>Built for speed and precision</p>
-      </div>
-      <div class="feature-box">
-        <div class="feature-icon">✨</div>
-        <h3>LOW POLY DESIGN</h3>
-        <p>Modern aesthetic meets functionality</p>
-      </div>
-      <div class="feature-box">
-        <div class="feature-icon">🎮</div>
-        <h3>FULL CONTROL</h3>
-        <p>Interactive 3D model viewer</p>
       </div>
     </section>
 
@@ -290,89 +283,15 @@
     </section>
 
     <!-- Reviews and Comments -->
-     <section class="reviews" id="reviews">
-  <h2>CUSTOMER REVIEWS</h2>
-  
-  <div class="reviews-marquee">
-    <div class="marquee-wrapper">
-      
-      <div class="review-track" id="track1">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">AX</div>
-              <div class="reviewer-details">
-                <h4>Alex Mercer</h4>
-                <div class="review-stars">★★★★★</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 15, 2025</span>
-          </div>
-          <p class="review-text">Absolutely love the RC Highwayman! The low-poly design looks amazing on my desk.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">SR</div>
-              <div class="reviewer-details">
-                <h4>Sarah Connor</h4>
-                <div class="review-stars">★★★★☆</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 12, 2025</span>
-          </div>
-          <p class="review-text">Great quality and fast shipping. The RC Annihilator is incredibly fast.</p>
+    <section class="reviews" id="reviews">
+      <h2>CUSTOMER REVIEWS</h2>
+      <div class="reviews-marquee">
+        <div class="marquee-wrapper">
+          <div class="review-track" id="track1"></div>
+          <div class="review-track" id="track2" aria-hidden="true"></div>
         </div>
       </div>
-
-      <div class="review-track" id="track2" aria-hidden="true">
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">AX</div>
-              <div class="reviewer-details">
-                <h4>Alex Mercer</h4>
-                <div class="review-stars">★★★★★</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 15, 2025</span>
-          </div>
-          <p class="review-text">Absolutely love the RC Highwayman! The low-poly design looks amazing on my desk.</p>
-        </div>
-        <div class="review-card">
-          <div class="review-header">
-            <div class="reviewer-info">
-              <div class="reviewer-avatar">SR</div>
-              <div class="reviewer-details">
-                <h4>Sarah Connor</h4>
-                <div class="review-stars">★★★★☆</div>
-              </div>
-            </div>
-            <span class="review-date">Oct 12, 2025</span>
-          </div>
-          <p class="review-text">Great quality and fast shipping. The RC Annihilator is incredibly fast.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="review-form-container centered-form">
-    <h3 class="leave">LEAVE A REVIEW</h3>
-    <form id="reviewForm" class="review-form">
-      <div class="form-row-flex">
-        <input type="text" id="revName" placeholder="Your Name" required />
-        <select id="revRating" required class="review-select">
-          <option value="" disabled selected>Rating</option>
-          <option value="5">★★★★★</option>
-          <option value="4">★★★★☆</option>
-          <option value="3">★★★☆☆</option>
-        </select>
-      </div>
-      <textarea id="revComment" placeholder="Share your experience..." rows="3" required></textarea>
-      <button type="submit" class="btn-primary">POST REVIEW</button>
-    </form>
-  </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -458,15 +377,30 @@
             <div class="form-section">
               <h3>Shipping Information</h3>
               <div class="form-row">
-                <input type="text" placeholder="Full Name" required />
-                <input type="email" placeholder="Email" required />
+                <input
+                  type="text"
+                  name="fullName"
+                  placeholder="Full Name"
+                  required
+                />
+                <input type="email" name="email" placeholder="Email" required />
               </div>
               <div class="form-row">
-                <input type="text" placeholder="Address" required />
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Address"
+                  required
+                />
               </div>
               <div class="form-row">
-                <input type="text" placeholder="City" required />
-                <input type="text" placeholder="Postal Code" required />
+                <input type="text" name="city" placeholder="City" required />
+                <input
+                  type="text"
+                  name="postalCode"
+                  placeholder="Postal Code"
+                  required
+                />
               </div>
             </div>
 
@@ -491,12 +425,27 @@
             <div class="form-section">
               <h3>Card Details</h3>
               <div class="form-row">
-                <input type="text" placeholder="Card Number" required />
+                <input
+                  type="text"
+                  name="cardNumber"
+                  placeholder="Card Number"
+                  required
+                />
               </div>
               <div class="form-row">
-                <input type="text" placeholder="Cardholder Name" required />
-                <input type="text" placeholder="MM/YY" required />
-                <input type="text" placeholder="CVV" required />
+                <input
+                  type="text"
+                  name="cardholderName"
+                  placeholder="Cardholder Name"
+                  required
+                />
+                <input
+                  type="text"
+                  name="expiryDate"
+                  placeholder="MM/YY"
+                  required
+                />
+                <input type="text" name="cvv" placeholder="CVV" required />
               </div>
             </div>
 
@@ -651,45 +600,83 @@
       </div>
     </div>
     <div class="modal" id="authModal">
-      <div class="modal-content" style="max-width: 420px;">
+      <div class="modal-content" style="max-width: 420px">
         <div class="modal-header">
           <h2>MY ACCOUNT</h2>
           <button class="close-modal" data-modal="authModal">&times;</button>
         </div>
         <div class="modal-body">
-          
           <div class="auth-tabs">
-            <button class="auth-tab active" data-target="loginForm">LOGIN</button>
-            <button class="auth-tab" data-target="registerForm">REGISTER</button>
+            <button class="auth-tab active" data-target="loginForm">
+              LOGIN
+            </button>
+            <button class="auth-tab" data-target="registerForm">
+              REGISTER
+            </button>
           </div>
 
           <form id="loginForm" class="auth-form active">
-            <div class="form-section" style="margin-bottom: 1.5rem;">
-              <div class="form-row" style="flex-direction: column; gap: 1.2rem;">
-                <input type="email" placeholder="Email Address" required />
-                <input type="password" placeholder="Password" required />
+            <div class="form-section" style="margin-bottom: 1.5rem">
+              <div class="form-row" style="flex-direction: column; gap: 1.2rem">
+                <input
+                  type="email"
+                  name="loginEmail"
+                  placeholder="Email Address"
+                  required
+                />
+                <input
+                  type="password"
+                  name="loginPassword"
+                  placeholder="Password"
+                  required
+                />
               </div>
             </div>
-            <button type="submit" class="btn-primary" style="width: 100%;">LOGIN SECURELY</button>
+            <button type="submit" class="btn-primary" style="width: 100%">
+              LOGIN SECURELY
+            </button>
             <p class="auth-footer-text">
               Forgot your password? <a href="#">Reset here</a>
             </p>
           </form>
 
           <form id="registerForm" class="auth-form hidden">
-            <div class="form-section" style="margin-bottom: 1.5rem;">
-              <div class="form-row" style="flex-direction: column; gap: 1.2rem;">
-                <input type="text" placeholder="Full Name" required />
-                <input type="email" placeholder="Email Address" required />
-                <input type="password" placeholder="Create Password" required />
+            <div class="form-section" style="margin-bottom: 1.5rem">
+              <div class="form-row" style="flex-direction: column; gap: 1.2rem">
+                <input
+                  type="text"
+                  name="registerFullName"
+                  placeholder="Full Name"
+                  required
+                />
+                <input
+                  type="email"
+                  name="registerEmail"
+                  placeholder="Email Address"
+                  required
+                />
+                <input
+                  type="password"
+                  name="registerPassword"
+                  placeholder="Create Password"
+                  required
+                />
               </div>
             </div>
-            <button type="submit" class="btn-secondary" style="width: 100%; box-shadow: 0 12px 28px rgba(30, 196, 181, 0.3);">CREATE ACCOUNT</button>
+            <button
+              type="submit"
+              class="btn-secondary"
+              style="
+                width: 100%;
+                box-shadow: 0 12px 28px rgba(30, 196, 181, 0.3);
+              "
+            >
+              CREATE ACCOUNT
+            </button>
             <p class="auth-footer-text">
               By registering, you agree to our <a href="#">Terms</a>
             </p>
           </form>
-
         </div>
       </div>
     </div>
