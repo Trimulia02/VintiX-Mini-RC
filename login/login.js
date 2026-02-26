@@ -5,7 +5,7 @@ var y = document.getElementById("register");
 
 // FUNGSI ANIMASI PINDAH TAB
 function login() {
-  x.style.display = "block";
+  x.style.display = "flex";
   y.style.display = "none";
   if (a) {
     a.className = "btn white-btn";
@@ -15,7 +15,7 @@ function login() {
 
 function register() {
   x.style.display = "none";
-  y.style.display = "block";
+  y.style.display = "flex";
   if (a) {
     a.className = "btn";
     b.className = "btn white-btn";
