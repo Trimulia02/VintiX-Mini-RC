@@ -126,5 +126,5 @@ function submitLogin() {
   showNotification(`Welcome back, ${user.firstName}! Login Successful.`, '--tosca');
   
   // Pindah ke halaman utama (Mundur 1 folder ke index.html)
-  window.location.href = "../index.html";
+  setTimeout(() => window.location.href = "../index.html", 3000);
 }

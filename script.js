@@ -275,7 +275,7 @@ function setupCheckoutButton() {
       if (!currentUserStr) {
         // Jika belum login, beri notifikasi dan pindahkan ke halaman login
         showNotification("Please login first to proceed to checkout!", '--primary-red');
-        window.location.href = "login/login.html";
+        setTimeout(() => window.location.href = "login/login.html", 3000);
         return;
       }
 
