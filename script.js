@@ -266,7 +266,7 @@ function setupCheckoutButton() {
 
       // 1. Cek apakah keranjang kosong
       if (cart.length === 0) {
-        alert("Your cart is empty!");
+        showNotification("Your cart is empty!", '--primary-red');
         return;
       }
 
@@ -274,7 +274,7 @@ function setupCheckoutButton() {
       const currentUserStr = localStorage.getItem("vintixCurrentUser");
       if (!currentUserStr) {
         // Jika belum login, beri notifikasi dan pindahkan ke halaman login
-        alert("Please login first to proceed to checkout!");
+        showNotification("Please login first to proceed to checkout!", '--primary-red');
         window.location.href = "login/login.html";
         return;
       }
@@ -423,7 +423,7 @@ function handleAddToCart(e) {
   const price = parseFloat(this.dataset.price);
 
   addToCart(product, price);
-  showCartNotification(product);
+  showNotification(`✓ ${product} added to cart!`, '--tosca');
 }
 
 /**
@@ -680,15 +680,15 @@ function updateCheckoutSummary() {
  * Show cart notification
  * @param {string} product - Product name
  */
-function showCartNotification(product) {
-  if (!product) return;
+function showNotification(text, color) {
+  if (!text) return;
 
   const notification = document.createElement("div");
   notification.style.cssText = `
     position: fixed;
     top: 80px;
     right: 20px;
-    background-color: var(--primary-red);
+    background-color: var(${color});
     color: white;
     padding: 1rem 1.5rem;
     border-radius: 8px;
@@ -697,7 +697,7 @@ function showCartNotification(product) {
     animation: slideInRight 0.3s ease;
     font-weight: bold;
   `;
-  notification.textContent = `✓ ${product} added to cart!`;
+  notification.textContent = text;
   document.body.appendChild(notification);
 
   setTimeout(() => {
@@ -739,7 +739,7 @@ function initCheckout() {
       e.preventDefault();
 
       if (!checkoutForm || !checkoutForm.checkValidity()) {
-        alert("Please fill in all required fields");
+        showNotification("Please fill in all required fields", '--primary-red')
         payBtn.focus();
         return;
       }
@@ -861,7 +861,7 @@ function handlePreviewAddToCart() {
   }
 
   if (priceText === "COMING SOON") {
-    alert("Product is not available for purchase yet.");
+    showNotification("Product is not available for purchase yet.", '--primary-red')
     return;
   }
 
@@ -869,10 +869,10 @@ function handlePreviewAddToCart() {
 
   if (price && !isNaN(price) && price > 0) {
     addToCart(productName, price);
-    showCartNotification(productName);
+    showNotification(`✓ ${productName} added to cart!`, '--tosca');
   } else {
     console.error("Invalid price:", priceText);
-    alert("Could not parse product price.");
+    showNotification("Could not parse product price.", '--primary-red');
   }
 }
 
@@ -1306,7 +1306,7 @@ function handleNotifyButton() {
   document.querySelectorAll(".btn-secondary").forEach((btn) => {
     if (btn.textContent.includes("NOTIFY")) {
       btn.addEventListener("click", () => {
-        alert("Thank you! We'll notify you when new models are available.");
+        showNotification("Thank you! We'll notify you when new models are available.", '--tosca')
       });
     }
   });
@@ -1509,9 +1509,9 @@ function initAuth() {
         setCurrentUser(user);
         updateAuthNav();
         closeModal("authModal");
-        alert("Logged in successfully!");
+        showNotification("Logged in successfully!", '--tosca')
       } else {
-        alert("Invalid credentials. Please try again or register.");
+        showNotification("Invalid credentials. Please try again or register.", '--primary-red');
       }
     });
   }
@@ -1527,9 +1527,9 @@ function initAuth() {
         setCurrentUser(user);
         updateAuthNav();
         closeModal("authModal");
-        alert("Registration successful and logged in!");
+        showNotification("Registration successful and logged in!", '--tosca');
       } else {
-        alert("Email already registered. Please login instead.");
+        showNotification("Email already registered. Please login instead.", '--tosca');
       }
     });
   }

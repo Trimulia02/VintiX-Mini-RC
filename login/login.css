@@ -2,6 +2,12 @@
 
 /* CSS VARIABLES — VintiX Racing Theme */
 :root {
+  /* Primary Colors */
+  --primary-red: #c41e3a;
+  --red-dark: #a21a31;
+  --tosca: #4dbfb8;
+  --tosca-dark: #3ba89f;
+
   --bg-deep: #070a10;
   --bg-mid: #0d1220;
   --neon-pink: #ff2d78;
