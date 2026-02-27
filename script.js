@@ -1562,18 +1562,8 @@ function updateAuthNav() {
           ${user.firstName}
         </span>
       `;
-      navLink.href = "#";
-      
-      // Fungsi Logout jika profil diklik
-      navLink.onclick = (e) => {
-        e.preventDefault();
-        const ok = confirm(`Log out from ${user.firstName}'s account?`);
-        if (ok) {
-          localStorage.removeItem("vintixCurrentUser");
-          window.location.reload(); // Refresh halaman agar kembali jadi tombol Login
-        }
-      };
-      
+      navLink.href = "login/profile.html";
+
     } else {
       // JIKA BELUM LOGIN: Tampilkan tombol default
       navLink.textContent = "LOGIN";

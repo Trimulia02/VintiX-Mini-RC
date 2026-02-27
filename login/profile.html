@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="profile.css" />
+    <title>VintiX | Profile</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav class="nav">
+        <div class="nav-logo">
+          <a href="../index.html"><img src="vintix-logo-nav.png" alt="VintiX" /></a>
+        </div>
+
+        <div class="nav-button">
+          <button class="btn white-btn" id="logoutBtn" onclick="logout()">
+            Log Out
+          </button>
+        </div>
+      </nav>
+
+      <!--------------Form box----------------->
+
+      <div class="form-box">
+        <div class="register-container" id="register">
+          <div class="top">
+            <header>Profile</header>
+          </div>
+          <div class="two-forms">
+            <div class="input-box">
+              <p class="input-field" id="firstName">Firstname</p>
+              <i class="bx bx-user"></i>
+            </div>
+            <div class="input-box">
+              <p class="input-field" id="lastName">Lastname</p>
+              <i class="bx bx-user"></i>
+            </div>
+          </div>
+          <div class="input-box">
+            <p class="input-field" id="email">Email</p>
+            <i class="bx bx-envelope"></i>
+          </div>
+          <div class="input-box">
+            <input type="password" class="input-field" id="currPassword" placeholder="Current Password" />
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <input type="password" class="input-field" id="newPassword" placeholder="New Password" />
+            <i class="bx bx-lock-alt"></i>
+          </div>
+          <div class="input-box">
+            <input type="button" class="submit" value="Change Password" onclick="changePassword(false)" />
+          </div>
+        </div>
+      </div>
+
+    <!--------------MAIN.JS----------------->
+    <script src="profile.js"></script>
+  </body>
+</html>
