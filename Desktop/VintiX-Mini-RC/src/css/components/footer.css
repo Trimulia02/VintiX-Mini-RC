@@ -1,0 +1,112 @@
+/* ========================================
+   FOOTER COMPONENT
+   ======================================== */
+
+.footer {
+  background: linear-gradient(
+    135deg,
+    var(--primary-red) 0%,
+    var(--red-dark) 100%
+  );
+  color: var(--white);
+  padding: var(--spacing-2xl) var(--spacing-xl) var(--spacing-lg);
+  position: relative;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 15px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--white) 0,
+    var(--white) 10px,
+    var(--primary-red) 10px,
+    var(--primary-red) 20px
+  );
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto var(--spacing-2xl);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-2xl);
+  padding-top: var(--spacing-lg);
+}
+
+.footer-section h4 {
+  color: var(--white);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-lg);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.footer-section ul {
+  list-style: none;
+}
+
+.footer-section ul li {
+  margin-bottom: var(--spacing-md);
+}
+
+.footer-section a {
+  color: var(--white);
+  text-decoration: none;
+  transition: var(--transition-fast);
+  font-size: var(--font-size-sm);
+}
+
+.footer-section a:hover {
+  color: var(--tosca);
+  text-decoration: underline;
+}
+
+.footer-logo {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footer-logo p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: var(--spacing-lg);
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: var(--white);
+  font-size: var(--font-size-sm);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+
+  .footer-logo {
+    text-align: center;
+  }
+}

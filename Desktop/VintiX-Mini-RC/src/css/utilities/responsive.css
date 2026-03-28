@@ -1,0 +1,111 @@
+/* ========================================
+   RESPONSIVE/BREAKPOINT UTILITIES
+   ======================================== */
+
+/* Tablet (1024px and below) */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+/* Mobile (768px and below) */
+@media (max-width: 768px) {
+  /* Typography */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Spacing */
+  section {
+    padding: var(--spacing-2xl) var(--spacing-lg);
+  }
+
+  /* Flexbox Utilities */
+  .flex-column {
+    flex-direction: column;
+  }
+
+  .flex-center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Grid Collapse */
+  .grid-collapse {
+    grid-template-columns: 1fr;
+  }
+
+  /* Hide/Show */
+  .hide-mobile {
+    display: none;
+  }
+
+  .show-mobile {
+    display: block;
+  }
+}
+
+/* Small Mobile (480px and below) */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--spacing-md);
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  /* Stack everything */
+  [class*="grid"],
+  [class*="flex"] {
+    flex-direction: column;
+  }
+}
+
+/* Large Desktop (1440px and above) */
+@media (min-width: 1440px) {
+  .container {
+    padding: 0 var(--spacing-2xl);
+  }
+
+  /* Increase spacing on large screens */
+  section {
+    padding: var(--spacing-3xl) var(--spacing-2xl);
+  }
+}
+
+/* Print Styles */
+@media print {
+  .navbar,
+  .footer,
+  .modal,
+  .cart-icon {
+    display: none;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
